@@ -50,3 +50,47 @@ sources:
     https://survey.stackoverflow.co/2019
     https://survey.stackoverflow.co/2024
 
+### Python tyyppi essee
+Type checking Python - An overview
+
+suunnitelma:
+- introkappale: tutkimuskysymyksen esittely,
+- tutkimusasian esittely
+    - python, sen tyyppisysteemi, type hintit, tyyppitarkistimet, näiden kehitysaikajana
+- ^mitä näistä ollaan tulkitsemassa
+- mitä tieteelliset paperit sanoo tai oletan että sanoo
+- johtopäätöksiä / kasaan tuomista
+
+
+An investigation into benefits and tradeoffs from Pythons type system, and related tooling and it's effect on software quality.
+
+Python is a top-5 by usage programming language. It is a high-level interpreted language whose syntax uses significant whitespace for conciseness. Significant usage domains include scientific computing, machine learning, web backend development and scripting. The conscise syntax and capability to make programs executable quickly have been significant advantages in taking market share from stricter, compiled languages such as Java, C# and C++.
+
+Python's runtime type system is dynamical and strong. This has played into the aforementioned advantage, but it has also been seen as a pain point as scale of software built with Python grows. Various tools have grown to improve quality and scaling of Python projects. This includes linters, runtime validators, frameworks, but this analysis will focus on type checkers specifically.
+
+The runtime type system of Python is strong, but due to the dynamic typing the constraints enforced at programming time are rarely strict. It is common for standard library functions to raise errors if input variables contain data of an invalid type. <source> Historically the best way to test for this was to either run the program or write tests. This can often be cumbersome for programmers.
+
+In 2014 Python developers drafted Python Enhancement Proposal 484 - Type hints. <https://peps.python.org/pep-0484/#rationale-and-goals > Ability to do improved static analysis, and possibility for improved refactoring, runtime type checks, and code generation were the motivation, with static analysis documented as the most important one. A prototypal type checker and the ability to add type metadata through a generic mechanism already existed, but this proposal standardized the way to annotate Python code with type data, enabling improved tooling development across the field.
+
+<TODO>: n. 100 sanaa jokaisesta, maininta onko tieteellistä tutkimusta, miksi keskitytään tiettyyn tai miksi näillä ei ole hirveästi väliä tutkimuksen kannalta.
+
+As of 2024 there are four significant options for Python type checking. Mypy by Python foundation is a common tool to run in Continuous Integration environments to do type checking across tests. It has a command line interface and plugins for various text editors.
+
+Pyright is developed by Microsoft, and integrated into Visual Studio Code through the Pylance extension.
+
+Pytype is developed by Google and <>
+
+PyCharm from Jetbrains, the number 1 Python specific IDE, has its own type checker. <>
+
+It is common for developers to develop code with VS Code or PyCharm and then run `mypy` in a continuous integration environment, providing a sort of double checking with slightly different prioritizations affecting what sort of issues each checker complains about. It is plausible that in many projects the configuration between the two does not match 1:1, leading to situations where a programmer could commit locally type checking code that fails in CI, or another programmer could pull passing code from CI that does not pass locally. This phenomena is not common in other programming languages, where often a single type checker or the programming languages own compiler has a monopoly.
+
+
+Since the PEP was finalized, popularity of type hints has been steadily growing. According to [1] who analyzed a sample of source code repositories from Github.com, from 2017 to 2021 the amount of type hints has increased linearly. In libraries the type hints also serve the function of documenting function inputs and outputs, and in stable public APIs they are cheap to maintain since the public facing interfaces rarely change. <source> The effect of type hinting to program correctness has been studied by <>[2].
+
+
+
+
+
+sources:
+    1: https://www.software-lab.org/publications/fse2022_type_study.pdf
+    2:
