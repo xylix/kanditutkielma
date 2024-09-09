@@ -1,8 +1,9 @@
 # Contradictory superimposing of typing on dynamically typed programming languages
 
-## plan:
+
+## plan
 - kappale kaikista näistä:
-    - mitä on javascript
+    - johdanto (mitä esseessä käsitellään, miksi)
     - mitä on python
     - mitä yhteistä näillä on
     - miksi ne on valittu tutkielman tarkastelukohteeksi
@@ -10,7 +11,6 @@
     - havaittu ristiriita siinä että päällelätkitään staattisuutta dynaamisiin kieliin
         ^hypoteesejä tästä ilmiöstä
     - mitä tutkielmassa koitetaan selvittää
-
 
 ## sijoitettavia kappaleita / lauseita
 ## essay:
