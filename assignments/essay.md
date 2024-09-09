@@ -1,17 +1,6 @@
 # Contradictory superimposing of typing on dynamically typed programming languages
 
 
-## plan
-- kappale kaikista näistä:
-    - johdanto (mitä esseessä käsitellään, miksi)
-    - mitä on python
-    - mitä yhteistä näillä on
-    - miksi ne on valittu tutkielman tarkastelukohteeksi
-    - vähän yleistä löpinää staattisen tyypityksen yleistymisestä dynaamisten kielten kanssa
-    - havaittu ristiriita siinä että päällelätkitään staattisuutta dynaamisiin kieliin
-        ^hypoteesejä tästä ilmiöstä
-    - mitä tutkielmassa koitetaan selvittää
-
 ## sijoitettavia kappaleita / lauseita
 ## essay:
 
@@ -54,12 +43,22 @@ sources:
 Type checking Python - An overview
 
 suunnitelma:
-- introkappale: tutkimuskysymyksen esittely,
-- tutkimusasian esittely
-    - python, sen tyyppisysteemi, type hintit, tyyppitarkistimet, näiden kehitysaikajana
 - ^mitä näistä ollaan tulkitsemassa
 - mitä tieteelliset paperit sanoo tai oletan että sanoo
 - johtopäätöksiä / kasaan tuomista
+
+## plan
+- kappale kaikista näistä:
+    - johdanto (mitä esseessä käsitellään, miksi), tutkimuskysymykset
+    - mitä on python
+        - python, sen tyyppisysteemi, type hintit, tyyppitarkistimet, näiden kehitysaikajana
+    - miksi on valittu tutkielman tarkastelukohteeksi
+    - vähän yleistä löpinää staattisen tyypityksen yleistymisestä dynaamisten kielten kanssa
+    - havaittu ristiriita siinä että päällelätkitään staattisuutta dynaamisiin kieliin
+        ^hypoteesejä tästä ilmiöstä
+    - mitä tutkielmassa koitetaan selvittää
+
+
 
 
 An investigation into benefits and tradeoffs from Pythons type system, and related tooling and it's effect on software quality.
