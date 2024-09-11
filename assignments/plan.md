@@ -13,6 +13,8 @@
             - Python type hint in Competitive Programming
                 - Sample size 5, aika epäselvää onko hyötyä, tosi isoa vaihtelua experimenttien / testihenkilöiden välillä
 
+    - Mypy vs Pyright efficiency at bug detection
+
 Title ideas:
     - Python type hints as programming ergonomic and correctness aid
     - Type checking Python - How, why and where?:

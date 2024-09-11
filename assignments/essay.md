@@ -61,35 +61,50 @@ suunnitelma:
 
 
 
-An investigation into benefits and tradeoffs from Pythons type system, and related tooling and it's effect on software quality.
+## An investigation into benefits and tradeoffs from Pythons type system, and related tooling and it's effect on software quality.
 
-Python is a top-5 by usage programming language. It is a high-level interpreted language whose syntax uses significant whitespace for conciseness. Significant usage domains include scientific computing, machine learning, web backend development and scripting. The conscise syntax and capability to make programs executable quickly have been significant advantages in taking market share from stricter, compiled languages such as Java, C# and C++.
+### introduction
+Types have been recognised to play a significant part in programming ergonomics and static analysis of source code, which motivates this research. An overview of how types work in Python, where they are used, and why will be provided as contextualization. The main research question is how much benefit does increased use of Python type hints provide. An Empirical Study of Type-Related Defects in Python Projects (2022) [1] found that in a 210 project open-source dataset 15% of real defects could have been avoided with type hints and type checking.
 
-Python's runtime type system is dynamical and strong. This has played into the aforementioned advantage, but it has also been seen as a pain point as scale of software built with Python grows. Various tools have grown to improve quality and scaling of Python projects. This includes linters, runtime validators, frameworks, but this analysis will focus on type checkers specifically.
+### Pythonin kuvaus:
+Python is a top-5 usage programming language. It is a high-level interpreted language whose syntax uses significant whitespace for conciseness. Significant usage domains include scientific computing, machine learning, web backend development and scripting. The conscise syntax and capability to make programs executable quickly have been significant advantages in growing market share from stricter, compiled languages such as Java, C# and C++.
 
-The runtime type system of Python is strong, but due to the dynamic typing the constraints enforced at programming time are rarely strict. It is common for standard library functions to raise errors if input variables contain data of an invalid type. <source> Historically the best way to test for this was to either run the program or write tests. This can often be cumbersome for programmers.
+Python's runtime type system is dynamical and strong. This has played into the aforementioned advantage, but it has also been seen as a pain point as scale of software built with Python grows. Various tools have grown to improve quality and scaling of Python projects. This includes linters, runtime validators, and frameworks.
+
+Even though the runtime type system of Python is strong, the dynamic typing lessens the possible strictness at programming time. Historically the best way to test for this was to either run the program or write tests. This can be cumbersome for programmers, compared to checking for type errors by automatically running a type check. <source>
 
 In 2014 Python developers drafted Python Enhancement Proposal 484 - Type hints. <https://peps.python.org/pep-0484/#rationale-and-goals > Ability to do improved static analysis, and possibility for improved refactoring, runtime type checks, and code generation were the motivation, with static analysis documented as the most important one. A prototypal type checker and the ability to add type metadata through a generic mechanism already existed, but this proposal standardized the way to annotate Python code with type data, enabling improved tooling development across the field.
 
+### Python type checking:
+As of 2024 there are four relevant options for Python type checking. Mypy by Python foundation is a common tool to run in Continuous Integration environments to do type checking across tests. It has a command line interface and plugins for various text editors.
+
 <TODO>: n. 100 sanaa jokaisesta, maininta onko tieteellistä tutkimusta, miksi keskitytään tiettyyn tai miksi näillä ei ole hirveästi väliä tutkimuksen kannalta.
+<todo> from bullet list to actual pragraphs
+- Pyright is developed by Microsoft, and integrated into Visual Studio Code through the Pylance extension.
 
-As of 2024 there are four significant options for Python type checking. Mypy by Python foundation is a common tool to run in Continuous Integration environments to do type checking across tests. It has a command line interface and plugins for various text editors.
+- Pytype is developed by Google and <>
 
-Pyright is developed by Microsoft, and integrated into Visual Studio Code through the Pylance extension.
-
-Pytype is developed by Google and <>
-
-PyCharm from Jetbrains, the number 1 Python specific IDE, has its own type checker. <>
+- PyCharm from Jetbrains, the number 1 Python specific IDE, has its own type checker. <>
 
 It is common for developers to develop code with VS Code or PyCharm and then run `mypy` in a continuous integration environment, providing a sort of double checking with slightly different prioritizations affecting what sort of issues each checker complains about. It is plausible that in many projects the configuration between the two does not match 1:1, leading to situations where a programmer could commit locally type checking code that fails in CI, or another programmer could pull passing code from CI that does not pass locally. This phenomena is not common in other programming languages, where often a single type checker or the programming languages own compiler has a monopoly.
 
+### Adaption of type hints
 
-Since the PEP was finalized, popularity of type hints has been steadily growing. According to [1] who analyzed a sample of source code repositories from Github.com, from 2017 to 2021 the amount of type hints has increased linearly. In libraries the type hints also serve the function of documenting function inputs and outputs, and in stable public APIs they are cheap to maintain since the public facing interfaces rarely change. <source> The effect of type hinting to program correctness has been studied by <>[2].
+Since the PEP was finalized, popularity of type hints has been steadily growing. In libraries the type hints also serve the function of documenting function inputs and outputs, and in stable public APIs they are cheap to maintain since the public facing interfaces rarely change. <source>
 
+In 2022 Di Grazia & Pradel investigated the adoption of type hints in The Evolution of Type Annotations in Python: An Empirical Study[2]. They found that in a sample of code repositories from Github.com, from 2017 to 2021 the amount of type hints has increased linearly.
 
+<insert findings from above paper>
 
+### Effects of type hinting
+The effect of type hinting to program correctness has been studied. In An Empirical Study of Type-Related Defects in Python Projects [1] Khan et al. found that 11% of all researched defects could be detected by adding type annotations and running a type checker.
+
+A representative random sample of 400 defects was sampled from a list of all Python project related Github issues labelled as defects between 2015-2018 (373 742 issues in total). They used Swanson's [3] classification system to classify fixes and the related defects, and 15% of corrective fixes were detected with Mypy. This was 11% of all fixes. Corrective fixes consist of failures in processing, performance or implementation, in contrast to "adaptive" (data or processing environment related mainteinance tasks) and "perfective" (processing inefficiencies, performance enhancements and maintability improvements).
+
+Earlier work by Gao et al. [4] found that in another dynamic language, Javascript, 11-18% percent of defects was found by adding type annotations and checking. Even though the languages differ the similarity in results works to validate that it can be possible to find >10% of defects with type checking.
 
 
 sources:
-    1: https://www.software-lab.org/publications/fse2022_type_study.pdf
-    2:
+    1. https://ieeexplore.ieee.org/abstract/document/9436020
+    2: https://www.software-lab.org/publications/fse2022_type_study.pdf
+    3. The Dimensions of Mainteinance E. Burton Swanson http://www.mit.jyu.fi/ope/kurssit/TIES462/Materiaalit/Swanson.pdf
