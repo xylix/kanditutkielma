@@ -66,11 +66,12 @@ suunnitelma:
 - Pytype is developed by Google and <>
 - PyCharm from Jetbrains, the number 1 Python specific IDE, has its own type checker. <>
 
+TODO: termien type annotation ja type hint välille consistencyä
 
 ## Effect of Python type hints on finding problems
 
 ### Introduction
-Types have been recognised to play a significant part in programming ergonomics and static analysis of source code, which motivates this research. An overview of how types work in Python, where they are used, and why will be provided as contextualization. The main research question is how much benefit does increased use of Python type hints provide. An Empirical Study of Type-Related Defects in Python Projects (2022) [1] found that in a 210 project open-source dataset 15% of real defects could have been avoided with type hints and type checking. Python 3 Types in the Wild: A Tale of Two Type Systems[4] found that from repositories that use Python type hints in the wild, only 15% type check succesfully.
+Types have been recognised to play a significant part in programming ergonomics and static analysis of source code, which motivates this research. An overview of how types work in Python, where they are used, and why will be provided as contextualization. The main research question is how much benefit does increased use of Python type hints provide. An Empirical Study of Type-Related Defects in Python Projects (2022) [1] found that in a 210 project open-source dataset 15% of real defects could have been avoided with type hints and type checking. Python 3 Types in the Wild: A Tale of Two Type Systems [4] found that from repositories that use Python type hints in the wild, only 15% type check succesfully.
 
 ### What Python is:
 Python is a top-5 usage programming language. It is a high-level interpreted language whose syntax uses significant whitespace for conciseness. Significant usage domains include scientific computing, machine learning, web backend development and scripting. The conscise syntax and capability to make programs executable quickly have been significant advantages in growing market share from stricter, compiled languages such as Java, C# and C++.
@@ -92,16 +93,14 @@ In 2020 Rak-amnouykit et al. researched specifics about the Python type hints [4
 
 Since the PEP was finalized, popularity of type hints has been steadily growing. In libraries the type hints also serve the function of documenting function inputs and outputs, and in stable public APIs they are cheap to maintain since the public facing interfaces rarely change. <source>
 
-In 2022 Di Grazia & Pradel investigated the adoption of type hints in The Evolution of Type Annotations in Python: An Empirical Study[2]. They found that in a sample of code repositories from Github.com, from 2017 to 2021 the amount of type hints has increased linearly.
-
-<insert findings from above paper>
+In 2022 Di Grazia & Pradel investigated the adoption of type hints in The Evolution of Type Annotations in Python: An Empirical Study. They found that in a sample of code repositories from Github.com, from 2017 to 2021 the amount of type hints has increased linearly. In the sample type hinting had focused on function parameter and return types, and less on variable types. 90.1% of type annotations never get updated. [2]
 
 ### Effects of type hinting
 The effect of type hinting to program correctness has been studied. In An Empirical Study of Type-Related Defects in Python Projects [1] Khan et al. found that 11% of all researched defects could be detected by adding type annotations and running a type checker.
 
 A representative random sample of 400 defects was sampled from a list of all Python project related Github issues labelled as defects between 2015-2018 (373 742 issues in total). They used Swanson's [3] classification system to classify fixes and the related defects, and 15% of corrective fixes were detected with Mypy. This was 11% of all fixes. Corrective fixes consist of failures in processing, performance or implementation, in contrast to "adaptive" (data or processing environment related mainteinance tasks) and "perfective" (processing inefficiencies, performance enhancements and maintability improvements).
 
-Earlier work by Gao et al. [4] found that in another dynamic language, Javascript, 11-18% percent of defects was found by adding type annotations and checking. Even though the languages differ the similarity in results works to validate that it can be possible to find >10% of defects with type checking.
+Earlier work by Gao et al. [6] found that in another dynamic language, Javascript, 11-18% percent of defects was found by adding type annotations and checking. Even though the languages differ the similarity in results works to validate that it can be possible to find over 10% of defects with type checking.
 
 ### Conclusions
 
@@ -113,8 +112,10 @@ Further research into how type hinting compares to other static analysis tools c
 
 
 sources:
-    1. https://ieeexplore.ieee.org/abstract/document/9436020
-    2: https://www.software-lab.org/publications/fse2022_type_study.pdf
+    1. An Empirical Study of Type-Related Defects in Python Projects https://ieeexplore.ieee.org/abstract/document/9436020
+    2: The Evolution of Type Annotations in Python:
+An Empirical Study https://www.software-lab.org/publications/fse2022_type_study.pdf
     3. The Dimensions of Mainteinance E. Burton Swanson http://www.mit.jyu.fi/ope/kurssit/TIES462/Materiaalit/Swanson.pdf
     4. Python 3 Types in the Wild: A Tale of Two Type Systems https://dl.acm.org/doi/10.1145/3426422.3426981
-    5. https://peps.python.org/pep-0484/#rationale-and-goals
+    5. Python Enchancement Proposal 484 https://peps.python.org/pep-0484/#rationale-and-goals
+    6. To Type or Not to Type: Quantifying Detectable Bugs in JavaScript https://ieeexplore.ieee.org/abstract/document/7985711
