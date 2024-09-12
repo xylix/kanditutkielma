@@ -39,15 +39,15 @@ sources:
     https://survey.stackoverflow.co/2019
     https://survey.stackoverflow.co/2024
 
-### Python tyyppi essee
+# Python tyyppi essee
 Type checking Python - An overview
 
+
+## plan
 suunnitelma:
 - ^mitä näistä ollaan tulkitsemassa
 - mitä tieteelliset paperit sanoo tai oletan että sanoo
 - johtopäätöksiä / kasaan tuomista
-
-## plan
 - kappale kaikista näistä:
     - johdanto (mitä esseessä käsitellään, miksi), tutkimuskysymykset
     - mitä on python
@@ -80,7 +80,7 @@ Python's runtime type system is dynamical and strong. This has played into the a
 
 Even though the runtime type system of Python is strong, the dynamic typing lessens the possible strictness at programming time. Historically the best way to test for this was to either run the program or write tests. This can be cumbersome for programmers, compared to checking for type errors by automatically running a type check.
 
-In 2014 Python developers drafted Python Enhancement Proposal 484 - Type hints[5]. Ability to do improved static analysis, and possibility for improved refactoring, runtime type checks, and code generation were the motivation, with static analysis documented as the most important one. A prototypal type checker and the ability to add type metadata through a generic mechanism already existed, but this proposal standardized the way to annotate Python code with type data, enabling improved tooling development across the field.
+In 2014 Python developers drafted Python Enhancement Proposal 484 - Type hints [5]. Ability to do improved static analysis, and possibility for improved refactoring, runtime type checks, and code generation were the motivation, with static analysis documented as the most important one. A prototypal type checker and the ability to add type metadata through a generic mechanism already existed, but this proposal standardized the way to annotate Python code with type data, enabling improved tooling development across the field.
 
 ### Python type checking:
 As of 2024 there are four relevant options for Python type checking. Mypy by Python foundation is a common tool to run in Continuous Integration environments to do type checking across tests. It has a command line interface and plugins for various text editors.
@@ -111,11 +111,10 @@ It seems that type hints and checking consistently improve code quality by helpi
 Further research into how type hinting compares to other static analysis tools could provide useful insights. It could be useful to research how to make programming or type hinting in ways that pass type checks easier. It could also be useful to compare different Python type checkers and their performance development from 2015 to 2024.
 
 
-sources:
-    1. An Empirical Study of Type-Related Defects in Python Projects https://ieeexplore.ieee.org/abstract/document/9436020
-    2: The Evolution of Type Annotations in Python:
-An Empirical Study https://www.software-lab.org/publications/fse2022_type_study.pdf
-    3. The Dimensions of Mainteinance E. Burton Swanson http://www.mit.jyu.fi/ope/kurssit/TIES462/Materiaalit/Swanson.pdf
-    4. Python 3 Types in the Wild: A Tale of Two Type Systems https://dl.acm.org/doi/10.1145/3426422.3426981
-    5. Python Enchancement Proposal 484 https://peps.python.org/pep-0484/#rationale-and-goals
-    6. To Type or Not to Type: Quantifying Detectable Bugs in JavaScript https://ieeexplore.ieee.org/abstract/document/7985711
+### Sources:
+1. An Empirical Study of Type-Related Defects in Python Projects https://ieeexplore.ieee.org/abstract/document/9436020
+2: The Evolution of Type Annotations in Python: An Empirical Study https://www.software-lab.org/publications/fse2022_type_study.pdf
+3. The Dimensions of Mainteinance E. Burton Swanson http://www.mit.jyu.fi/ope/kurssit/TIES462/Materiaalit/Swanson.pdf
+4. Python 3 Types in the Wild: A Tale of Two Type Systems https://dl.acm.org/doi/10.1145/3426422.3426981
+5. Python Enchancement Proposal 484 https://peps.python.org/pep-0484/#rationale-and-goals
+6. To Type or Not to Type: Quantifying Detectable Bugs in JavaScript https://ieeexplore.ieee.org/abstract/document/7985711
