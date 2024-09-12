@@ -1,6 +1,7 @@
 # Thesis plan
 
 - idea ACM luokittelusta: CCS -> Software and its engineering -> Software notations and tools -> General programming languages -> Language features -> ??
+    - Software and its engineering → Language features; Software evolution; · General and reference
 - my personal learning goals:
     - How rigid is the type system of Python, what guarantees does it provide?
     - Describing Pythons type system and type hint system on a technical level
