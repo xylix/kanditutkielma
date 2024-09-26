@@ -21,7 +21,7 @@ In 2020 Rak-amnouykit et al. researched specifics about the Python type hints [4
 
 ### Adaption of type hints
 
-Since 2014 popularity of type hints has been steadily growing. In libraries the type hints also serve the function of documenting function inputs and outputs, and in stable public APIs they are cheap to maintain since the public facing interfaces rarely change. <source>
+Since 2014 popularity of type hints has been steadily growing. In libraries the type hints also serve the function of documenting function inputs and outputs, and in stable public APIs they are cheap to maintain since the public facing interfaces rarely change.
 
 In 2022 Di Grazia & Pradel investigated the adoption of type hints in The Evolution of Type Annotations in Python: An Empirical Study. They found that in a sample of code repositories from Github.com, from 2017 to 2021 the amount of type hints has increased linearly. In the sample type hinting had focused on function parameter and return types, and less on variable types. 90.1% of type annotations never get updated. [2]
 
