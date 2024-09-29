@@ -1,0 +1,27 @@
+{"paperId": "08286aeb9c9c99b4b4767167ac9d35dc31151068", "title": "multiplierz: an extensible API based desktop environment for proteomics data analysis", "year": 2009, "citationCount": 76}
+{"paperId": "1e655fa69c62b430b051224153f701f1b607fd9c", "title": "Typilus: neural type hints", "year": 2020, "citationCount": 111}
+{"paperId": "27a118ef5bce2fc62b97f1c537fa1e31e1f80587", "title": "Julia: dynamism and performance reconciled by design", "year": 2018, "citationCount": 72}
+{"paperId": "29fc7ff02e68537a86d32978bfd2e8e45258e77d", "title": "LambdaNet: Probabilistic Type Inference using Graph Neural Networks", "year": 2020, "citationCount": 102}
+{"paperId": "3b97850da6b4bd4985a3e7e89edbdc9a8b33b0cf", "title": "Root System Markup Language: Toward a Unified Root Architecture Description Language1[OPEN]", "year": 2015, "citationCount": 100}
+{"paperId": "4dd54f3a0276774e3a7b792cdb59a1fc61937190", "title": "Efficient searching and annotation of metabolic networks using chemical similarity", "year": 2015, "citationCount": 50}
+{"paperId": "54cd1a33a978ec279f46a671a13c7883f8a706c4", "title": "Bonnet: An Open-Source Training and Deployment Framework for Semantic Segmentation in Robotics using CNNs", "year": 2018, "citationCount": 82}
+{"paperId": "6cb40055bd871ee2178cea3d535c5c52d63ac3af", "title": "Learning Python Code Suggestion with a Sparse Pointer Network", "year": 2016, "citationCount": 85}
+{"paperId": "72cc0b36560030917971c2e9b77969d0377b031f", "title": "DeepGSR: an optimized deep-learning structure for the recognition of genomic signals and regions", "year": 2018, "citationCount": 53}
+{"paperId": "979d5677b001b5d253241ce437cf31a1d734ff39", "title": "MEMOTE for standardized genome-scale metabolic model testing", "year": 2020, "citationCount": 308}
+{"paperId": "a429c6c8407b10a89c9610ab5e9682ec89772356", "title": "TypeWriter: neural type prediction with search-based validation", "year": 2019, "citationCount": 102}
+{"paperId": "bd43d44eec45e922303f94fa19d79b859c72b17c", "title": "Bio.Phylo: A unified toolkit for processing, analyzing and visualizing phylogenetic trees in Biopython", "year": 2012, "citationCount": 124}
+{"paperId": "bf7b426c0fe087f2d31749f286cbd771060bbca3", "title": "Staphylococcus aureus viewed from the perspective of 40,000+ genomes", "year": 2018, "citationCount": 78}
+{"paperId": "c2e5c0e08f454757c4c0a745fc693b1b1bbd332e", "title": "miEAA 2.0: integrating multi-species microRNA enrichment analysis and workflow management systems", "year": 2020, "citationCount": 137}
+{"paperId": "1e655fa69c62b430b051224153f701f1b607fd9c", "title": "Typilus: neural type hints", "year": 2020, "citationCount": 111}
+{"paperId": "f801f962c895d5c606cb52db85f099a4ed8c34e2", "title": "Python probabilistic type inference with natural language support", "year": 2016, "citationCount": 85}
+{"paperId": "ea1b62a03ab16c4acca6f7041c6f096bedec244b", "title": "Deep learning type inference", "year": 2018, "citationCount": 183}
+
+wrong field of science:
+
+
+promising ones:
+{"paperId": "e3b581cd563f7243531f9274c32ba2db18f5fdce", "title": "Design and evaluation of gradual typing for python", "year": 2014, "citationCount": 134}
+
+
+ML ones: (I will mention these exist, but they won't be significant sources for my work) (but it's also possible to write about these, e.g. write about "ways to add type annotations and their efficiency")
+    -

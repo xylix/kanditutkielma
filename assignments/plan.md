@@ -57,6 +57,8 @@ Due to having more coursework coming in study period 2, I'm trying to frontload 
     -  Why is statical typing for Python programs rising in popularity?
         - What are the perceived reasons programmers implement typing into Python projects
     - Empirical benefits from statically typing Python programs
+    - Using type annotations for runtime behaviour
+        - FastAPI, Pydantic
 - Related work
 - Conclusions:
     - Implications
