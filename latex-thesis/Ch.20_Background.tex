@@ -1,0 +1,31 @@
+\chapter{Background\label{background}}
+
+% tämä lienee toisteista introductionin kanssa. Osa importattu esseestä
+
+
+\section{Python}
+Python is a high-level interpreted language whose syntax uses significant whitespace for conciseness. Significant usage domains include scientific computing, machine learning, web backend development and scripting. The concise syntax and capability to make programs executable quickly have been significant advantages in growing market share from stricter, compiled languages such as Java, C\# and C++.
+
+Python's runtime type system is dynamical and strong. This has played into the aforementioned advantage, but it has also been seen as a pain point as scale of software built with Python grows. Various tools have grown to improve quality and scaling of Python projects. This includes linters, runtime validators, and frameworks.
+
+Even though the runtime type system of Python is strong, the dynamic typing lessens the possible strictness at programming time. Historically the best way to test for this was to either run the program or write tests. This can be cumbersome for programmers, compared to checking for type errors by automatically running a type check.
+
+In 2014 Python developers drafted Python Enhancement Proposal 484 - Type hints [5]. Ability to do improved static analysis, and possibility for improved refactoring, runtime type checks, and code generation were the motivation, with static analysis documented as the most important one. A prototypal type checker and the ability to add type metadata through a generic mechanism already existed, but this proposal standardized the way to annotate Python code with type data, enabling improved tooling development across the field.
+
+% TODO: figure of a python type hint
+
+\section{Python type checking}
+As of 2024 there are four relevant options for Python type checking. % citation needed
+Mypy by Python foundation is a common tool to run in Continuous Integration environments to do type checking across tests. It has a command line interface and plugins for various text editors.
+
+Pyright ... 
+
+Pytype ...
+
+PyCharm ...
+
+
+It is common for developers to develop code with VS Code or PyCharm and then run {\tt mypy } in a continuous integration environment, providing a sort of double checking with slightly different prioritisations affecting what sort of issues each checker complains about. It is plausible that in many projects the configuration between the two does not match 1:1, leading to situations where a programmer could commit locally type checking code that fails in CI, or another programmer could pull passing code from CI that does not pass locally. This phenomena is not common in other programming languages, where often a single type checker or the programming languages own compiler has a monopoly.
+
+In 2020 Rak-amnouykit et al. researched specifics about the Python type hints [4]. They tried to answer "(i) How often and in what ways do developers use Python 3 types? (ii) Which type errors do developers make? (iii) How do type errors from different tools compare?". One result was that even though type hints and checking is more popular, only 15\% of the 2678 codebases analysed successfully type checked with Mypy. They also found out that errors from Mypy and Pytype find both false positives and runtime defect related type errors.
+

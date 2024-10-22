@@ -18,7 +18,7 @@
 %%      algorithms-track-2020 = Algorithms study track
 %%      networking-track-2020 = Networking study track
 
-\documentclass[english,twoside,censored,csm,software-track-2020]{HYthesisML} 
+\documentclass[english,twoside,censored,tkt]{HYthesisML} 
 
 
 % If wanted, open new chapters only at right page.
@@ -37,9 +37,9 @@
 
 %% Reference style: select one 
 %% for APA = Harvard style = authoryear -> (Einstein, 1905) use:
-\usepackage[style=authoryear,bibstyle=authoryear,backend=biber,natbib=true,maxnames=99,maxcitenames=2,uniquelist=minyear,giveninits=true,uniquename=mininit]{biblatex}
+% \usepackage[style=authoryear,bibstyle=authoryear,backend=biber,natbib=true,maxnames=99,maxcitenames=2,uniquelist=minyear,giveninits=true,uniquename=mininit]{biblatex}
 %% for numeric = Vancouver style -> [1] use:
-%\usepackage[style=numeric,bibstyle=numeric,backend=biber,natbib=true,maxbibnames=99,giveninits=true,uniquename=init]{biblatex}
+\usepackage[style=numeric,bibstyle=numeric,backend=biber,natbib=true,maxbibnames=99,giveninits=true,uniquename=init]{biblatex}
 %% for alpahbetic -> [Ein05] use:
 %\usepackage[style=alphabetic,bibstyle=alphabetic,backend=biber,natbib=true,maxbibnames=99,giveninits=true,uniquename=init]{biblatex}
 %
@@ -95,7 +95,7 @@
 % \overfullrule=1mm
 % to see more info in the detailed log about under/overfull boxes...
 % \showboxbreadth=50 
-% \showboxdepth=50
+% \showboxd epth=50
 
 
 
@@ -106,7 +106,7 @@
 %% Replace parameters with your information.
 \title{Title}
 
-\author{Firstname Lastname}
+\author{Kerkko Pelttari}
 \date{\today}
 
 % Set supervisors, use the titles according to the thesis language
@@ -194,10 +194,11 @@
 %% which simply inputs the content of the given file like it was copy&pasted there manually.
 
 \include{Ch.10_Introduction}
-\include{Ch.20_Methods}
-\include{Ch.30_Results}
+\include{Ch.20_Background}
+\include{Ch.30_Analysis}
 \include{Ch.40_Discussion}
-\include{Ch.50_Conclusions}
+\include{Ch.50_Related_Work}
+\include{Ch.60_Conclusions}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\cleardoublepage                          %fixes the position of bibliography in bookmarks
@@ -212,9 +213,9 @@
 %% A sample Appendix
 \include{Ch.90_Appendix_1}
 %% another appendix
-\include{instructions/instructions_english}
+% \include{instructions/instructions_english}
 %% yet another appendix
-\include{instructions/instructions_finnish}
+% \include{instructions/instructions_finnish}
 
 % BSc instructions
 %\include{instructions/bsc_finnish_contents}
