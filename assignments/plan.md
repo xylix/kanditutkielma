@@ -39,12 +39,12 @@ Due to having more coursework coming in study period 2, I'm trying to frontload 
     - 6 [ ] 29.11. Finalizing
 
 ## Idea for the structure of the thesis paper:
-- Introduction
+- Introduction ~1-2 pages
     - Python is a popular general purpose programming language, originally designed for <> and nowadays used for <>
     - Statically type hinting Python programs is becoming more common
         - Why?
     - The inherent contradiction in using a dynamically typed language but adding more tooling for static checking
-- Chapter introducing the objects for analysis:
+- "Introducing the objects for analysis" Background: 2-3 pages
     - Python
     - Static vs dynamic typing, strong vs weak typing
     - Python type system and checkers
@@ -52,15 +52,15 @@ Due to having more coursework coming in study period 2, I'm trying to frontload 
             - how it works
         - Difference between the "actual" runtime types (that every Python program uses) and type hints
         - Checkers: mypy, pyright, others?
-- TODO: Another chapter?
-- Chapter analyzing the solutions:
+/* - TODO: Another chapter? */
+- "Chapter analyzing the solutions" Types as a tool: 3-5 pages
     -  Why is statical typing for Python programs rising in popularity?
         - What are the perceived reasons programmers implement typing into Python projects
     - Empirical benefits from statically typing Python programs
     - Using type annotations for runtime behaviour
         - FastAPI, Pydantic
-- Related work
-- Conclusions:
+- Related work 1 page
+- Conclusions: 1-2 page
     - Implications
         - where does dynamic typing still seem popular and/or appropriate
         - (?) growing proportion of building large applications with python
