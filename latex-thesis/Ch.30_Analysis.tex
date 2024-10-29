@@ -1,5 +1,21 @@
 \chapter{Analysis\label{analysis}}
 
+\section{Type annotating Python programs}
 
 "observations"
 - Tale of two type systems and TODO reported a high proportion of the used dataset not type checking. (Todo check) They did not report which settings they used when running MyPy and PyType, and it is plausible that they did not configure the type checker version and settings for each source code repository separately. This could cause false false positives, eg errors that do not appear in the repository with correct checker settings. This can also cause errors to appear that are not visible to the project developers, due to being added in a later type checker version than the one they use. 
+
+
+
+\subsection{Popularity}
+Why do programmers statically type Python programs? How often / to what proportion?     
+
+\subsection{Empirical benefits}
+
+Making use of types and type checking can allow development time detection of various program defects. In a retroactive analysis it was found that up to 15\% of corrective defects that had to be patched could have been found at development time with types\cite{khan_empirical_2022}. Corrective defects consist of failures in processing, performance and implementation, and thus preventing or fixing them is a necessary part of software maintenance.
+
+Both experienced and inexperienced programmers make significant amounts of type-related mistakes when working with Python\cite{khan_empirical_2022}. These consist of: using variables before initializing them, null safety errors, and re-using variables with values of different types. This implies that both experienced and inexperienced programmers can derive benefits from types.
+
+
+\section{Runtime typing}
+TODO: FastAPI, Pydantic
