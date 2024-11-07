@@ -7,7 +7,7 @@
 
 Type systems are tools that enable abstract organization and categorization of data and related tools\cite{programming_langs}. They allow the programming language to give guarantees about data structures, they enable varying behaviour based on the specified type, and they can do work as inferred, controllable comments.
 
-Effectively all modern high level programming languages make use of type systems. The systems vary in granularity, constraints and infer logic. % TODO: citation needed?
+Effectively all modern high level programming languages make use of type systems. The systems vary in granularity, constraints and infer logic. \comment{TODO: citation needed?}
 
 Type errors are raised when an operation is called with incorrect (runtime) types. In Python 3.12.6 executing {\tt 1 + "a"} yields the error {\tt "TypeError: unsupported operand type(s) for +: 'int' and 'str'" }. Some programming languages do more, and some less implicit conversion between types when an operation is applied to differently typed arguments. Languages that do less, or no conversion are called strongly typed. Languages with implicit type conversion are called weakly typed. % possibly source, possibly obvious
 
@@ -19,35 +19,39 @@ Python's implementation of type annotations does not affect program behaviour li
 
 % - Mitkä osat static vs dynamic dilemmasta on tutkimuskontekstissa relevantteja?
 
-
-
 \section{Python}
 Python is a high-level interpreted language whose syntax uses significant whitespace for conciseness. Significant usage domains include scientific computing, machine learning, web backend development and scripting. The concise syntax and capability to make programs executable quickly have been significant advantages in growing market share from stricter, compiled languages such as Java, C\# and C++.
 
-Python's runtime type system is dynamical and strong. This has played into the aforementioned advantage, but it has also been seen as a pain point as scale of software built with Python grows. Various tools have grown to improve quality and scaling of Python projects. This includes linters, runtime validators, and frameworks.
-
-In 2014 Python developers drafted Python Enhancement Proposal 484 - Type hints [5]. Ability to do improved static analysis, and possibility for improved refactoring, runtime type checks, and code generation were the motivation, with static analysis documented as the most important one. A prototypal type checker and the ability to add type metadata through a generic mechanism already existed, but this proposal standardized the way to annotate Python code with type data, enabling improved tooling development across the field.
-
-% TODO: figure of a python type hint
- 
-\section{Python type checking}
-As of 2024 there are four widely adopted tools for Python type checking: Mypy, Pyright, Pycharm and Pytype % citation needed
-
-
-Mypy by Python foundation is a common tool to run in Continuous Integration environments to do type checking across tests. It has a command line interface and plugins for various text editors. It is commonly run in CI environments. % citation needed
-
-Pyright is part of Microsoft's VS Code's Python plugin PyLance, which is the most popular Python language plugin for the most popular code editor.   % TODO: etsi source
-
-Pytype is an inference focused (it can work without any annotations) type checker from Google. % TODO: tsekkaa mikä source sopii hyvin
-
-
-PyCharm is a commercial Python IDE developed by JetBrains s.r.o. It is the most popular Python IDE. Pycharm contains an integrated type checker. The checker was originally developed to work with pure inference, before a way to annotate types in Python had been specified. Nowadays it also makes use of annotated type information. 
-% TODO: find a source on pycharm. Figure out if Pycharm can be run in CI contexts ja jos voi tekeekö kukaan niin
-
-
-It is common for developers to develop code with VS Code or PyCharm and then run {\tt mypy } in a continuous integration environment, providing a sort of double checking with slightly different prioritisations affecting what sort of issues each checker complains about. It is plausible that in many projects the configuration between the two does not match 1:1, leading to situations where a programmer could commit locally type checking code that fails in CI, or another programmer could pull passing code from CI that does not pass locally. This phenomena is not common in other programming languages, where often a single type checker or the programming languages own compiler has a monopoly.
-
-In 2020 Rak-amnouykit et al. researched specifics about the Python type hints [4]. They tried to answer "(i) How often and in what ways do developers use Python 3 types? (ii) Which type errors do developers make? (iii) How do type errors from different tools compare?". One result was that even though type hints and checking is more popular, only 15\% of the 2678 codebases analysed successfully type checked with Mypy. They also found out that errors from Mypy and Pytype find both false positives and runtime defect related type errors.
-
 
 \subsection{Types in Python}
+
+Type annotated Python has two type systems which have different scopes:
+
+The first one  runtime type system is semantically and behaviourally relevant. The type of a Python object at runtime contains data on its values shape and possible behaviour for the object. 
+The second one was added in 2014 after Python developers drafted Python Enhancement Proposal 484 - Type hints \cite{pep_484}. Ability to do improved static analysis, and possibility for improved refactoring, runtime type checks, and code generation were the motivation, with static analysis documented as the most important one. A prototypal type checker and the ability to add type metadata through a generic mechanism already existed, but this proposal standardized the way to annotate Python code with type data, enabling improved tooling development across the field.
+
+Enforcement and performing any static analysis on these annotations is completely optional and up to the developer\cite{python_typing}.
+
+In this thesis we focus on discussing the annotation based higher level type system.
+
+\comment{TODO: figure of a python type hint}
+ 
+\section{Python type checking}
+As of 2024 there are four widely adopted tools for Python type checking: Mypy, Pyright, PyCharm and Pytype % citation needed
+
+
+Mypy by Python foundation is a common tool to run in Continuous Integration environments to do type checking across tests. It has a command line interface and plugins for various text editors. It is commonly run in CI environments\cite{TODO}.
+
+Pyright is part of Microsoft's VS Code's Python extension PyLance, which is the most popular Python language extension for the most popular code editor \cite{TODO}.
+
+Pytype is an inference focused (it can work without any annotations) type checker from Google. \comment{TODO: tsekkaa mikä source sopii hyvin}
+
+
+PyCharm is a commercial Python IDE developed by JetBrains s.r.o. It is the most popular Python IDE. PyCharm contains an integrated type checker. The checker was originally developed to work with pure inference, before a way to annotate types in Python had been specified. Nowadays it also makes use of annotated type information. 
+\comment{TODO: find a source on pycharm. Figure out if Pycharm can be run in CI contexts ja jos voi tekeekö kukaan niin}
+
+
+\comment{TODO: fix references and language, figure out if this is relevant. (Straight from essay)}
+It is common for developers to develop code with VS Code or PyCharm and then run {\tt mypy } in a continuous integration environment, providing a sort of double checking with slightly different prioritisations affecting what sort of issues each checker complains about. It is plausible that in many projects the configuration between the two does not match 1:1, leading to situations where a programmer could commit locally type checking code that fails in CI, or another programmer could pull passing code from CI that does not pass locally. This phenomena is not common in other programming languages, where often a single type checker or the programming languages own compiler has a monopoly.
+
+In 2020 Rak-amnouykit et al. researched specifics about the Python type hints [4]. They tried to answer "(i) How often and in what ways do developers use Python 3 types? (ii) Which type errors do developers make? (iii) How do type errors from different tools compare?". \comment{TODO: kuulunee analysis 3.1.1 osioon?} One result was that even though type hints and checking is more popular, only 15\% of the 2678 codebases analysed successfully type checked with Mypy. They also found out that errors from Mypy and Pytype find both false positives and runtime defect related type errors.

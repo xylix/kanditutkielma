@@ -1,3 +1,13 @@
 \chapter{Related work\label{related_work}}
 
-Automated type inference for Python type hints is a popular research area.
+\section{Automated type inference}
+Automated type inference for Python type annotations is a popular research area. Often machine learning was used to add types to untyped Python code\citetemp
+, or to find type errors\citetemp. 
+
+\section{Mass type checking}
+
+One research method to investigate correctness of existing type annotations in Python code is to take a dataset and then run type checking against it \cite{rak-amnouykit_taleoftwo_2020}\cite{di_grazia_evolution_2022}. For these type checking runs authors rarely ensure that the type checking tool, type checker version, and the tools settings are a good match to the projects own configuration. This means that when up to 78.3\% of commits are found to contain type errors\cite{di_grazia_evolution_2022}, it is possible that developers programming the code have run type checks and gotten less errors due to configuration difference.
+
+% "observations"
+% - Tale of two type systems and TODO reported a high proportion of the used dataset not type checking. (Todo check) They did not report which settings they used when running MyPy and PyType, and it is plausible that they did not configure the type checker version and settings for each source code repository separately. This could cause false false positives, eg errors that do not appear in the repository with correct checker settings. This can also cause errors to appear that are not visible to the project developers, due to being added in a later type checker version than the one they use. 
+

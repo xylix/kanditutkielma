@@ -4,14 +4,37 @@
     % Tutkimuskysymyksen ja -menetelmän asettaminen, tulosten yhteenveto
     % Lukujen roolitus
 
+\comment{testi}
 
-Python is a general-purpose dynamically typed programming language. It has been growing fast in popularity since early 2010s.
+Python is a general purpose programming language that is in widespread use. Recently there have been developments in making use of gradual typing via type annotations and inference to aid in Python development.
+
+Python's growing market share, along with growing popularity of typing solutions for Python, seemingly contains a contradiction: Why adopt a dynamic language, if you are going to statically type the code anyway?
+
+
+It has been found that the choice between a statically or dynamically typed language can have a modest but statistically significant effect on code quality \cite{ray_codequality_2014}.
+In a reproduction study \cite{codequality_reproudction_2019} the result could not be reproduced.
+\comment{TODO: selitä miksi nää kaksi paperia on hyvä sample tän kentän tilanteesta, tai kaiva metastudy}
+
+However in gradually typing dynamic languages, various sources find that using Typescript over JavaScript can provide statistically significant improvements in code quality. %cite typescript sources
+
+
+\comment{TODO: fix this article paremmaksi muotoiluksi}
+This thesis provides a background in Python, its type system, and type checking solutions available for Python. Then we analyse how, why, and to what effect type annotations are being used for in Python.
+
+\comment{TODO: core research question:}
+\comment{TODO: tulosten yhteenveto}
+
+
+\comment{TODO: old stuff, perhaps delete all:}
+
+
+% Python is a general-purpose dynamically typed programming language. It has been growing fast in popularity since early 2010s.
 % TODO: viittaa SO developer surveyhyn
-In general dynamic programming languages have been gaining market share. In certain problems dynamic languages provide rapid prototyping capabilities and work better for newcomers. % An Empirical Comparison of Seven Programming Languages (Koitin kaivaa, niiden alkuperäislähde tolle on heikko / statee että tulokset ei yleistyisi...)
+% In general dynamic programming languages have been gaining market share. In certain problems dynamic languages provide rapid prototyping capabilities and work better for newcomers. % An Empirical Comparison of Seven Programming Languages (Koitin kaivaa, niiden alkuperäislähde tolle on heikko / statee että tulokset ei yleistyisi...)
 
-In 2014 Python introduced PEP-484 to support type annotations, also known as type hints. \cite{pep_484} The solution specifies that by default the annotations will be available at runtime. It does not specify a way to utilize them. Various type checkers have been developed. %citation needed
+% In 2014 Python introduced PEP-484 to support type annotations, also known as type hints. \cite{pep_484} The solution specifies that by default the annotations will be available at runtime. It does not specify a way to utilize them. Various type checkers have been developed. %citation needed
 
-These type checkers provide ways to statically analyse Python source code to find type errors. Type errors can help developers find and possibly fix software defects. \cite{khan_empirical_2022} 
+% These type checkers provide ways to statically analyse Python source code to find type errors. Type errors can help developers find and possibly fix software defects. \cite{khan_empirical_2022} 
 
-This paper provides an overview of ways that Python source code can be type annotated and type checked. Then we investigate the costs and benefits of type annotating Python.
+% This paper provides an overview of ways that Python source code can be type annotated and type checked. Then we investigate the costs and benefits of type annotating Python.
 

@@ -20,7 +20,20 @@
 
 \documentclass[english,twoside,censored,tkt]{HYthesisML} 
 
+\newif\ifcomments
+\commentstrue
+%\commentsfalse
 
+\newcommand{\citetemp}{
+\ifcomments
+    \textcolor{red}{[!]}
+\fi
+}
+\newcommand{\comment }[1]{
+   \ifcomments
+    \emph{\textcolor{blue}{ (#1) }}
+   \fi
+}
 % If wanted, open new chapters only at right page.
 % By default, "openany".
 %\PassOptionsToClass{openright,twoside,a4paper}{report}
@@ -45,7 +58,7 @@
 %
 
 \addbibresource{bibliography.bib}
-% in case you want the final delimiter between authors & -> (Einstein & Zweistein, 1905) 
+% in case you want the final delimiter between authors & -> (Einstein & Zweistein, 1905)    
 % \renewcommand{\finalnamedelim}{ \& }
 % List the authors in the Bibilipgraphy as Lastname F, Familyname G,
 \DeclareNameAlias{sortname}{family-given}
@@ -104,16 +117,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Set up personal information for the title page and the abstract form.
 %% Replace parameters with your information.
-\title{Title}
+\title{Python Type Annotations: Usage and Benefits}
 
 \author{Kerkko Pelttari}
 \date{\today}
 
 % Set supervisors, use the titles according to the thesis language
 % in English Prof. or Dr., or in Finnish toht. or tri or FT, TkT, Ph.D. or in Swedish... 
-\supervisors{Prof.~D.U.~Mind, Dr.~O.~Why}
+\supervisors{Prof. Dorota Glowacka, Dr. Yang Liu}
 
-\keywords{algorithms, data structures}
+\keywords{Python, Type systems, Type annotations, Type checking, Gradual typing}
 \additionalinformation{\translate{\track}}
 
 %% For seminar reports:
@@ -126,8 +139,8 @@
 %% about three levels in the path; each path requires a new line.
 
 \classification{\protect{\ \\
-\  General and reference $\rightarrow$ Document types  $\rightarrow$ Surveys and overviews\  \\
-\  Applied computing  $\rightarrow$ Document management and text processing  $\rightarrow$ Document management $\rightarrow$ Text editing
+\  Software and its engineering $\rightarrow$ Software notations and tools  $\rightarrow$ General programming languages\  \\
+\ $\rightarrow$ Language features 
 }}
 
 %% If you want to quote someone special. You can comment this line out and there will be nothing on the document.
@@ -142,12 +155,12 @@
     pdfmenubar=true,        % show Acrobat’s menu?
     pdffitwindow=false,     % window fit to page when opened
     pdfstartview={FitH},    % fits the width of the page to the window
-    pdftitle={},            % title
-    pdfauthor={},           % author
+    pdftitle={Python Type Annotations: Usage and Benefits},            % title
+    pdfauthor={Kerkko Pelttari},           % author
     pdfsubject={},          % subject of the document
     pdfcreator={},          % creator of the document
     pdfproducer={pdfLaTeX}, % producer of the document
-    pdfkeywords={something} {something else}, % list of keywords for
+    pdfkeywords={python} {type systems} {type annotations}, % list of keywords for
     pdfnewwindow=true,      % links in new window
     colorlinks=true,        % false: boxed links; true: colored links
     linkcolor=black,        % color of internal links

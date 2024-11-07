@@ -2,13 +2,19 @@
 
 \section{Type annotating Python programs}
 
-"observations"
-- Tale of two type systems and TODO reported a high proportion of the used dataset not type checking. (Todo check) They did not report which settings they used when running MyPy and PyType, and it is plausible that they did not configure the type checker version and settings for each source code repository separately. This could cause false false positives, eg errors that do not appear in the repository with correct checker settings. This can also cause errors to appear that are not visible to the project developers, due to being added in a later type checker version than the one they use. 
 
+\comment{TODO: "in one study" kökköä kieltä}
+\subsection{How}
+Annotations often stay unchanged for a long while after being added \cite{di_grazia_evolution_2022}. In one study the projects under research  could be split into three patterns: regular annotation, type sprints, and occasional usage. The used pattern correlated with number of contributors, with regular annotation averaging the highest contributor count of 62, type sprints 45, and occasional use projects averaging 25 contributors. A motivation of type annotations helping coordination between higher numbers of active contributors was hypothesized to explain this phenomena.
+
+In the same github-exported dataset, 78.3\% of commits that were type annotated contained type errors\cite{di_grazia_evolution_2022}.
 
 
 \subsection{Popularity}
-Why do programmers statically type Python programs? How often / to what proportion?     
+\comment{TODO: Why do programmers statically type Python programs? How often / to what proportion?}
+
+
+\section{Type checking}
 
 \subsection{Empirical benefits}
 
@@ -16,6 +22,11 @@ Making use of types and type checking can allow development time detection of va
 
 Both experienced and inexperienced programmers make significant amounts of type-related mistakes when working with Python\cite{khan_empirical_2022}. These consist of: using variables before initializing them, null safety errors, and re-using variables with values of different types. This implies that both experienced and inexperienced programmers can derive benefits from types.
 
+Type annotations can enable improved editor support for the programmer.
+\comment{TODO: laajenna, citation needed}
 
-\section{Runtime typing}
-TODO: FastAPI, Pydantic
+
+\section{Runtime guarantees}
+
+Pydantic is a frequently used data validation library for Python that enables runtime data validation from type annotations\cite{pydanticdev_welcome_nodate}.
+\comment{TODO: FastAPI, Pydantic academic source}
