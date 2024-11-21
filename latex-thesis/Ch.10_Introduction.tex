@@ -10,18 +10,17 @@ Python is a general purpose programming language that is in widespread use. Rece
 
 Python's growing market share, along with growing popularity of typing solutions for Python, seemingly contains a contradiction: Why adopt a dynamic language, if you are going to statically type the code anyway?
 
+In statically typed languages the source code is typed at compile time, with type hints and type inference. A dynamic language assigns types at runtime. This affects the way programmers interact with type errors and can shift the focus point of correctness guarantees from compilation time to  runtime.
 
-It has been found that the choice between a statically or dynamically typed language can have a modest but statistically significant effect on code quality \cite{ray_codequality_2014}.
-In a reproduction study \cite{codequality_reproudction_2019} the result could not be reproduced.
+The choice between a statically or dynamically typed language can have a modest but statistically significant effect on code quality \cite{ray_codequality_2014}.
+However in a reproduction study \cite{codequality_reproudction_2019} the result could not be reproduced. Analysing empirical result differences between different programming languages is difficult.
 \comment{TODO: selitä miksi nää kaksi paperia on hyvä sample tän kentän tilanteesta, tai kaiva metastudy}
 
-However in gradually typing dynamic languages, various sources find that using Typescript over JavaScript can provide statistically significant improvements in code quality. %cite typescript sources
-
+Type-annotated Python can be described as a gradually typed language. Gradual typing is a mix of dynamic and static typing. Applying gradual typing to existing dynamic languages, such as using TypeScript over JavaScript can provide statistically significant improvements in code quality. %cite typescript sources
 
 \comment{TODO: fix this article paremmaksi muotoiluksi}
 This thesis provides a background in Python, its type system, and type checking solutions available for Python. Then we analyse how, why, and to what effect type annotations are being used for in Python.
 
-\comment{TODO: core research question:}
 \comment{TODO: tulosten yhteenveto}
 
 
