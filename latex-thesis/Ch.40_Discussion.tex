@@ -8,12 +8,9 @@ Research on Python Type annotations focuses on how they are used, and their bene
 
 \section{Why choose Python, and then try to statically type it?}
 
-Developers are not actually trying to completely statically type Python programs. As can be seen from the amount of type errors present in most Python projects in the wild\citetemp, developers are utilizing the fact that a gradual type system enables gradually typing projects.
+Developers are not actually trying to completely statically type Python programs. As can be seen from the amount of type errors present in most Python projects in the wild\cite{rak-amnouykit_taleoftwo_2020, di_grazia_evolution_2022}, developers are utilizing the fact that a gradual type system enables gradually typing projects.
 
-\subsection{Gradually typing Python}
-Benefits of gradual typing: Gradual types work as documentation for internal and external APIs. Gradual types can be utilized to focus correctness efforts in the code base to the spots where they make most sense.
-
-\subsection{Why adopt Python}
+\subsection{Why use Python}
 Python is popular for a multitude of reasons:
 
 Its design goals have lead to a programming language that is easy to learn, quick to write, and simple to read. Effectively no popular statically typed languages have a similar design focus on developer experience.
@@ -53,12 +50,17 @@ There are many useful packages, only exceeded by NPM (JavaScript / TypeScript). 
     \label{fig:language_comparison}
 \end{figure}
 
+\comment{Because of the fact that I don't have data to place the "Typed Python" on the figure properly, this feels a lot less informative and scientific than I originally thought. Maybe cut.}
+
 Demonstrative figure \ref{fig:language_comparison} describes Python and Typed Python relative correctness and consciseness properties compared to other programming languages. Correctness refers to how many constructs and validations the language provides to ensure that programs are correct. Consciseness refers to the amount of required source code to achieve a certain function.
 
 The figure is based on a study of various programming languages performance on Rosetta Code tasks \cite{nanz_comparative_2015}. They do not generalize to generic programs, but they are indicative and the relations are consistent with other research \cite{ray_codequality_2014}. (All the Python code in the study was untyped, since Python type annotations were not adopted before 2015. Typed Python was not researched in the study, and is a hypothetical addition.)
 
 Python has apparently managed to arrive at a useful compromise on readability, expressivity and syntactic noise. Gradual typing provides a way to increase readability and correctness, with a cost of additional syntactic noise.
 
-\subsection{Why type check Python}
+\subsection{Gradually typing Python}
+Benefits of gradual typing: Gradual types work as documentation for internal and external APIs. Gradual types can be utilized to focus correctness efforts in the code base to the spots where they make most sense \cite{di_grazia_evolution_2022}.
 
-\comment{TODO: type checking Python is easier than ever due to tooling improvements (varasta osasta 2.3.1 tekstiä tänne)}
+\comment{TODO: expand on benefits / features of gradual typing}
+
+\comment{\subsection{Why type check Python} TODO: type checking Python is easier than ever due to tooling improvements (Take some text from part 2.3.1 to here)}

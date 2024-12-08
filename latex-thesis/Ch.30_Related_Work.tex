@@ -6,15 +6,16 @@ One research method to investigate correctness of existing type annotations in P
 
 However due to the methodology it is plausible that some of these type errors were false positives. Possible reasons for false positives include: Too strict type checking settings, using different settings from the ones that the project normally uses, and differing type checker version from the ones used.
 
-It is common for developers to develop code with VS Code or PyCharm and then run {\tt mypy } in a continuous integration environment, providing a sort of double checking with slightly different prioritisations affecting what sort of issues each checker complains about. It is plausible that in many projects the configuration between the two does not match 1:1, leading to situations where a programmer could commit locally type checking code that fails in CI, or another programmer could pull passing code from CI that does not pass locally. This phenomena is not common in other programming languages, where often a single type checker or the programming languages own compiler has a monopoly. \citetemp
+\comment{TODO: What other type annotation research methodologies were observed in the research material?}
 
-\comment{TODO: mitä muita type annotation metodologioita on?}
 
-\section{Type annotation practices}
+\section{Type annotations}
+
+\section{Usage practices}
 
 Annotations often stay unchanged for a long while after being added \cite{di_grazia_evolution_2022}. Projects can be categorized into three patterns: regular annotation, type sprints, and occasional usage. In a dataset of 9655 Python projects the used pattern correlated with number of contributors, with regular annotation averaging the highest contributor count of 62, type sprints 45, and occasional use projects averaging 25 contributors. A motivation of type annotations helping coordination between higher numbers of active contributors was hypothesized to explain this phenomena. 
 
-\subsection{Popularity of type annotations}
+\subsection{Popularity}
 
 \begin{figure}
     \centering
@@ -28,14 +29,11 @@ Using a single large Python project picked for representativeness (Tensorflow) \
 
 The trend of adoption for type annotations is increasing, but the proportion of typed code was not very high by 2022.
 
-\section{Type checking}
-
 \subsection{Correctness}
 
 A 2020 study of Python type hint usage patterns \cite{rak-amnouykit_taleoftwo_2020} found that even though type hints and checking is more popular, only 15\% of the 2678 codebases analysed successfully type checked with Mypy. They also found out that errors from Mypy and Pytype find both false positives and runtime defect related type errors.
 
-In a Github-exported dataset, 78.3\% of commits that were type annotated contained type errors \cite{di_grazia_evolution_2022}. \comment{TODO: sano jotain parempaa kuin github-exported dataset}
-
+A stduy of 9655 most popular Python projects on Github in 2022 found that 78.3\% of commits that had type annotations contained type errors \cite{di_grazia_evolution_2022}.
 
 \subsection{Empirical benefits}
 
@@ -45,12 +43,11 @@ Both experienced and inexperienced programmers make significant amounts of type-
 
 
 Type annotations can enable improved editor support for the programmer.
-\comment{TODO: laajenna editoripointtia, citation needed}
+\comment{TODO: expand on the editor point, and a citation needed}
 
-% \section{Runtime guarantees}
-% Pydantic is a frequently used data validation library for Python that enables runtime data validation from type annotations\cite{pydanticdev_welcome_nodate}.
-% \comment{TODO: FastAPI, Pydantic academic source}
+\section{Runtime guarantees}
 
+Pydantic is a frequently used data validation library for Python that enables runtime data validation using type annotations\cite{pydanticdev_welcome_nodate}. There is no academic research available on its effectiveness and popularity. Common use cases include web services where incoming data has to be validated anyway, type annotations enabling a simple way to write schemas.
 
 % "observations"
 % - Tale of two type systems and TODO reported a high proportion of the used dataset not type checking. (Todo check) They did not report which settings they used when running MyPy and PyType, and it is plausible that they did not configure the type checker version and settings for each source code repository separately. This could cause false false positives, eg errors that do not appear in the repository with correct checker settings. This can also cause errors to appear that are not visible to the project developers, due to being added in a later type checker version than the one they use. 

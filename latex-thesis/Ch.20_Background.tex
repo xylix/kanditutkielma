@@ -4,18 +4,21 @@
 
 Type systems are tools that enable abstract organization and categorization of data and related tools \cite{programming_langs}. They allow the programming language to give guarantees about data structures, they enable varying behaviour based on the specified type, and they can do work as inferred, controllable comments.
 
-Effectively all modern high level programming languages make use of type systems. The systems vary in granularity, constraints and inference logic. \comment{TODO: citation needed?}
+Effectively all modern high level programming languages make use of type systems. The systems vary in features, granularity, constraints and inference logic.
 
-Type errors are raised when an operation is called with incorrect (runtime) types. In Python 3.12.6 executing {\tt 1 + "a"} yields the error {\tt "TypeError: unsupported operand type(s) for +: 'int' and 'str'" }. Some programming languages do more, and some less implicit conversion between types when an operation is applied to differently typed arguments. Languages that do less, or no conversion are called strongly typed. Languages with implicit type conversion are called weakly typed. \comment{TODO: possibly source, possibly obvious}
+Type errors are raised when an operation is called with incorrect (runtime) types. In Python 3.12.6 executing {\tt 1 + "a"} yields the error {\tt "TypeError: unsupported operand type(s) for +: 'int' and 'str'" }. Programming languages vary in implicit conversions between types when an operation is applied to differently typed arguments. 
 
+A reason to avoid implicit conversion is to ensure a higher level of correctness, to avoid unchecked runtime type errors. This is called a strong type system  \cite{cardelli_typeful_1989}. Python has a strong type system.
 
 \subsection{Static typing}
-Static typing requires a user to specify types at compile time, or for the compiler to have the ability to correctly infer types for all values. Tools for static languages can provide better suggestions and error detection, since more data is available for introspection. Compilers can also perform more effective, sometimes zero-cost optimizations for code based on type information. It is commonly believed that statical languages have better performance when optimized, and programming with them results in more correct programs. The first is often true but can vary case-by-case. \comment{Reference for static vs. dynamic language performance} The second is hard to analyse empirically \cite{codequality_reproudction_2019}, perhaps due to the fact that  many other qualities vary the correctness of written programs. 
+Static typing requires a user to specify types at compile time, or for the compiler to have the ability to correctly infer types for all values. Tools for static languages can provide better suggestions and error detection, since more data is available for introspection. Compilers can also perform more effective, sometimes zero-cost optimizations for code based on type information. It is commonly believed that statical languages have better performance when optimized, and programming with them results in more correct programs. The first is often true but can vary case-by-case. \comment{TODO: Reference for static vs. dynamic language performance} The second is hard to analyse empirically \cite{codequality_reproudction_2019}, perhaps due to the fact that  many other qualities vary the correctness of written programs. 
 
 Examples of statically typed languages would be C, C++, Java and Rust.
 
 \subsection{Dynamic typing}
-In a dynamically typed language the final assignments of types happen at runtime. There can even be situations where unknown data is received into the program and parsed into a type in runtime. It is commonly believed that it is faster to create programs with dynamic languages \citetemp. Dynamic languages are often taught as first programming languages, by initially leaving off the complexity of type systems.
+In a dynamically typed language the final assignments of types happen at runtime. There can even be situations where unknown data is received into the program and parsed into a type in runtime. Dynamic languages feature lightweight syntax that can make it faster to get going \cite{di_grazia_evolution_2022}. Dynamic languages are often taught as first programming languages, by initially leaving off the complexity of type systems.
+
+% secret TODO: the evolution cite is not good quality here
 
 Examples of dynamic languages include JavaScript, Python, R, Ruby, and most Lisps.
 
@@ -33,7 +36,7 @@ Python is a high-level interpreted dynamically typed programming language whose 
 
 Type annotated Python has two type systems which have different scopes:
 
-The first one runtime type system is semantically and behaviourally relevant. The type of a Python object at runtime contains data on its values shape and possible behaviour for the object. 
+The first, runtime type system, is semantically and behaviourally relevant. The type of a Python object at runtime contains data on its values shape and possible behaviour for the object. 
 The second one was added in 2014 after Python developers drafted Python Enhancement Proposal 484 - Type hints \cite{pep_484}. Ability to do improved static analysis, and possibility for improved refactoring, runtime type checks, and code generation were the motivation, with static analysis documented as the most important one. A prototypal type checker and the ability to add type metadata through a generic mechanism already existed, but this proposal standardized the way to annotate Python code with type data, enabling improved tooling development across the field.
 
 Enforcement and performing any static analysis on these annotations is completely optional and up to the developer \cite{python_typing}.
@@ -44,22 +47,22 @@ In this thesis we focus on discussing the annotation-based higher level gradual 
 Python's implementation of type annotations does not affect program behaviour like runtime types do. In theory one can run type annotated Python code without ever executing a type check, and without making use of the annotated type data. This follows the \emph{gradual guarantee} \cite{siek_refined_gradual_2015}, where a type annotated and non-annotated program should only differ in their type annotations.
 \comment{TODO: figure of a python type hint}
 
+
+\comment{
 \subsection{Type inference}
-\comment{TODO: may be unnecessary, liittyy paljon tyyppitarkistimiin}
+TODO: may be unnecessary. Technical detail about how type checkers work.}
  
 \subsection{Python type checking}
 
-\comment{TODO: anna täällä yleiskuva, analysoi related workissä tarkemmin / kommentoi mitä eroja näissä on havaittu}
-As of 2024 there are four widely adopted tools for Python type checking: Mypy, Pyright, PyCharm and Pytype % citation needed
+\comment{TODO: Do a comparison of the following tools in related work / further analysis}
+As of 2024 there are three widely adopted tools for Python type checking: Mypy, Pyright, PyCharm. There are also general linters and other code quality tools that type check, but these three are the most prevalent.
 
+It is common for developers to develop code with VS Code or PyCharm and then run {\tt mypy } in a continuous integration environment, providing a sort of double checking with slightly different prioritisations affecting what sort of issues each checker complains about.
 
-Mypy by Python foundation is a common tool to run in Continuous Integration environments to do type checking across tests. It has a command line interface and plugins for various text editors. It is commonly run in CI environments \citetemp.
+% It is plausible that in many projects the configuration between the two does not match 1:1, leading to situations where a programmer could commit locally type checking code that fails in CI, or another programmer could pull passing code from CI that does not pass locally. This phenomena is not common in other programming languages, where often a single type checker or the programming languages own compiler has a monopoly.
 
-Pyright is part of Microsoft's VS Code's Python extension PyLance, which is the most popular Python language extension for the most popular code editor \citetemp.
+Mypy by Python foundation is a common tool to run in Continuous Integration environments to do type checking across tests. It has a command line interface and can be utilized through Language Servers in code editors. 
 
-Pytype is an inference focused (developed to work without any annotations) type checker from Google. \comment{TODO: tsekkaa mikä source sopii hyvin}
+Microsoft's Visual Studio Code is the most popular editor for Python programming\cite{python_software_foundation_jetbrains_sro_python_nodate}. It utilizes Pyright for type checking by default, in-line type errors.
 
-PyCharm is a commercial Python IDE developed by JetBrains s.r.o. It is the most popular Python IDE. PyCharm contains an integrated type checker. The checker was originally developed to work with pure inference, before a way to annotate types in Python had been specified. Nowadays it also makes use of annotated type information. 
-\comment{TODO: find a source on pycharm. Figure out if Pycharm can be run in CI contexts ja jos voi tekeekö kukaan niin}
-
-
+PyCharm is a commercial Python IDE developed by JetBrains s.r.o. It is the second most popular Python editor and the most popular full IDE. PyCharm has its own integrated type checker. The checker was originally developed to work with pure inference, before a way to annotate types in Python had been specified. Nowadays it makes use of annotated type information, and can validate them \cite{jetbrains_type_hinting_pycharm}. PyCharm, being an IDE, is rarely utilized in CI systems. 
