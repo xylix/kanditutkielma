@@ -14,6 +14,7 @@ However due to the methodology it is plausible that some of these type errors we
 \section{Usage practices}
 
 Annotations often stay unchanged for a long while after being added \cite{di_grazia_evolution_2022}. Projects can be categorized into three patterns: regular annotation, type sprints, and occasional usage. In a dataset of 9655 Python projects the used pattern correlated with number of contributors, with regular annotation averaging the highest contributor count of 62, type sprints 45, and occasional use projects averaging 25 contributors. A motivation of type annotations helping coordination between higher numbers of active contributors was hypothesized to explain this phenomena. 
+\comment{TODO: havainnollistaako nää numerot oikeastaan mitään?}
 
 \subsection{Popularity}
 
@@ -25,7 +26,7 @@ Annotations often stay unchanged for a long while after being added \cite{di_gra
 \end{figure}
 From the introduction of Python type annotations in 2015 they reached around 8\% function argument and return coverage by 2021 in an analysis of 9655 Python projects \cite{di_grazia_evolution_2022}. 
 
-Using a single large Python project picked for representativeness (Tensorflow) \cite{lin_towards_large_scale_2023}, ratio of functions that have type annotations rose from 4.99\% in 2019 to 39.12\% in 2022. This increase seems consistent with the general rate in \ref{fig:annotation-evolution}.
+Using a single large Python project picked for representativeness (TensorFlow) \cite{lin_towards_large_scale_2023}, ratio of functions that have type annotations rose from 4.99\% in 2019 to 39.12\% in 2022. This increase seems consistent with the general rate in \ref{fig:annotation-evolution}.
 
 The trend of adoption for type annotations is increasing, but the proportion of typed code was not very high by 2022.
 
@@ -33,7 +34,7 @@ The trend of adoption for type annotations is increasing, but the proportion of 
 
 A 2020 study of Python type hint usage patterns \cite{rak-amnouykit_taleoftwo_2020} found that even though type hints and checking is more popular, only 15\% of the 2678 codebases analysed successfully type checked with Mypy. They also found out that errors from Mypy and Pytype find both false positives and runtime defect related type errors.
 
-A stduy of 9655 most popular Python projects on Github in 2022 found that 78.3\% of commits that had type annotations contained type errors \cite{di_grazia_evolution_2022}.
+A study of 9655 most popular Python projects on GitHub in 2022 found that 78.3\% of commits that had type annotations contained type errors \cite{di_grazia_evolution_2022}.
 
 \subsection{Empirical benefits}
 
