@@ -1,14 +1,61 @@
 \appendix{Lyhennelmä \label{appendix:lyhennelma }}
 
+TODOs:
+    - mahdollisesti leikkaa: (bugien)
+
+Lista termikäännöksistä:
+    - TODO: termeille joille ei ole kovin vakiintunutta suomennusta hyvä mainita enkkutermit tarkennuksina
+    - gradual typing: Vähittäinen tyypitys
+    - type annotation: ? (ihan vaan tyyppivihje?)
+    - type information: tyyppi-informaatio
+        TODO: tarkista
+    - unchecked exception: käsittelemätön poikkeus
+    - superset (tyyppirjärjestelmienkin kontekstissa): ylijoukko
+    - whitespace: ??
+    - scripting: ??
+    - onko "tyypitetty python" selkeä? Pitäiskö se esitellä terminä?
+        esittely: (jatkossa tyypitetty Python)
+    - refactor: ??
+
 - Plan:
 
 - Introduction
 
-    - Python on laajasti käytetty ohjelmointikieli. Vuonna 2015 siihen lisättiin 
-    - 
-    
+    - Python on laajasti käytetty ohjelmointikieli. Vuonna 2015 siihen lisättiin tuki valinnaisille tyyppivihjeille, jotka mahdollistavat uudenlaisen tyyppitiedon lisäämisen lähdekoodiin.
+    - Pythonin kasvava suosio ja Pythonin tyypitysratkaisujen kasvava suosio nostavat esiin ristiriidan: Miksi käyttää dynaamisesti tyypitettyä kieltä ja tyypittää koodi staattisesti?
+    - Staattisissa kielissä ohjelma tyypitetään kääntäessä. Dynaamisessa kielessä tyypit päätetään ajonaikaisesti. Valinta näiden välillä vaikuttaa siihen milloin tyyppivirheitä havaitaan, ja siirtää oikeellisuuden varmistamista käännös- ja ajonaikaisen välillä.
+    - Staattisen tai dynaamisen ohjelmointikielen valinnalla vaikuttaa joskus olevan tilastollisesti havaittava vaikutus ohjelmakoodin oikeellisuuteen \cite{nanz_comparative_2015, ray_codequality_2014}. Kuitenkin tulos paljon viitatusta vuoden 2014 tutkimuksesta \cite{ray_codequality_2014} ei toistunut vuonna 2019 suoritetussa toistotutkimuksessa \cite{codequality_reproudction_2019}. Havaitaan että ohjelmointikielillä kirjoitettujen ohjelmien oikeellisuuden vertailu on vaikeaa, sillä ohjelmointikielillä on monenlaisia eroja jotka tekevät oikeellisuuserojen vaikutuksen eristämisestä haastavaa.
+    - Python tyyppivihjeillä on vähittäisesti tyypitetty ohjelmointikieli (jatkossa tyypitetty Python). Sillä kirjoitetut ohjelmat omaavat sekä staattisen että dynaamisen kielen piirteitä. Vähittäisen tyypityksen ratkaisuista, kuten JavaScript ohjelmien tyypityksen laajentamisesta TypeScriptillä, voidaan hvaita tilastollisesti merkittäviä parannuksia ohjelmointivirheiden (bugien) havaitsemisessa. \cite{gao_to_type_or_not_2017}. Tyyppivihjeillä varustetulle Pythonille on löydetty lupaavia tuloksia bugien havainnoinnista tyypittämättömään Pythoniin verrattuna \cite{khan_empirical_2022, rak-amnouykit_taleoftwo_2020}
+    - <lukukuvaukset>
 
 - Background
+    - Tyyppijärjestelmät
+            TODO: alla olevan voisi muotoilla paremmin
+        - Tyyppijärjestelmät antavat organisoida ja kategorisoida ohjelman tilaa, informaatiota, funktioita, ja näihin liittyviä rakenteita \cite{programming_langs}. Niiden avulla ohjelmointikieli voi antaa takeita ohjelman toiminnasta, valita miten dataa käsitellään, ja tyyppi-informaatio voi toimia tarkistettavavana lisäinformaationa ohjelman rakenteesta.
+
+        - Käytännössä kaikki korkean tason ohjelmointikielet hyödyntävät tyyppijärjestelmää. Tyyppijärjestelmien ominaisuudet, hienojakoisuus, rajoitteet ja päättelylogiikka vaihtelevat. Ohjelmointikielet voidaan jakaa erinäisiin akseleihin: vahvasti ja heikosti tyypitettyihin, ja staattisesti, dynaamisesti tai vähittäin tyypitettyihin.
+
+    - Vahvat ja heikot tyyppijärjestelmät
+        - Vahvassa tyyppijärjestelmässä ei sallita käsittelemättömiä tyyppivirheitä \cite{cardelli_typeful_1989}. Tyyppivirheen tapahtuessa vahvasti tyypitetyn ohjelmointikielen on pakko antaa virhe ohjelmoijalle käsiteltäväksi, tai kaatua.
+        - Heikosti tyypitetyssä ohjelmointikielessä tyyppivirheen tapahtuessa se voidaan nostaa käsiteltäväksi virheeksi, mutta yleensä suoritetaan jonkinlainen implisiittinen tyyppimuunnos. Tämä voi joskus olla käytännöllistä, mutta voi johtaa virheelliseen toimintaan jonka tarkka syy on vaikea löytää.
+    - Staattinen tyypitys
+        - Staattisesti tyypitetyssä ohjelmointikielessä jokaisella symbolille on löydyttävä tai voitava päätellä oikea tyyppi tyyppitarkistuksessa, joka yleensä suoritetaan ohjelmakoodin kääntämisen yhteydessä. Teoriassa staattisesti tyypitetylle kielelle voidaan tarjota kattavampia ohjelmointityökaluja, sillä työkaluilla on enemmän informaatiota käytettävissä.
+
+    - Dynaaminen tyypitys
+        - Dynaamisesti tyypitetyssä kielessä tyypit symboleille selviävät vasta suorituksen aikana. Tämä mahdollistaa kevyemmän syntaksin, jossa ohjelmoijan ei tarvitse käyttää aikaa tyyppimäärittelyihin \cite{di_grazia_evolution_2022}.
+
+
+    - Vähittäinen tyypitys
+        - Vähittäiset tyypitysjärjestelmät muodostavat ylijoukon sekä staattisista että dynaamisista ohjelmointikielistä \cite{siek_refined_gradual_2015}. Vähittäisesti tyypitetyllä kielellä voi kirjoittaa sekä täysin staattisia että täysin dynaamisia ohjelmia, ja näiden välimuotoja. Erityisenä hyötynä tämä mahdollistaa ohjelmien tyypittämisessä keskittyä hyödyllisimpiin osioihin, ja kehittää tyyppikattavuutta vähitellen \cite{siek_refined_gradual_2015}. Usein vähittäiset tyyppijärjestelmät toteutetuaan olemassaolevan ohjelmointikielen päälle, kuten Pythonissakin.
+        TODO: whitespace
+    - Python on korkean tason tulkattu ohjelmointikielen joka on tiivis ja ilmaisuvoimainen. Pythonin tyyppijärjestelmä on vahva ja dynaaminen. Sitä käytetään esimerkiksi tieteelliseen laskentaan, koneoppimiseen, verkkopalvelukehitykseen ja scriptaukseen.
+    - Tyypit Pythonissa
+        - Tyypitetyssä Pythonissa on kaksi tyyppijärjestelmää: 1) Ajonaikainen, dynaaminen, ohjelman toimintaa ohjaava järjestelmä. 2) Valinnainen tyyppivihjeisiin ja päättelyyn pohjaava järjestelmä joka lisättiin vuonna 2014 \cite{pep_484}. Nämä tyyppivihjeet eivät itsessään vaikuta ohjelman ajonaikaiseen käytökseen, mutta niitä hyödynnetään työkaluissa ja tarkistimissa.
+    - Tyyppivihjeet
+        - Keskitymme tarkastelemaan tyyppijärjestelmää 2). Tyyppivihjeiden tarkistamisen vapaaehtoisuus noudattaa \emph{vähittäistakuuta} (gradual guarantee), jonka mukaan saman ohjelman tyypitetyn ja tyypittämättömän version eroavaisuuksien tulisi rajoittua niiden tyyppeihin \cite{siek_refined_gradual_2015}. Pythonissa tyyppivihjeitä merkitään kaksoispisteellä muuttujille ja argumenteille {\tt x: int} ja nuolella funktioiden palautusarvoille {\tt def f() -> int: return 1}.
+    - Tyyppitarkistus Pythonissa
+        -
+    - Tyyppipäättely
 
 - Related work
 
