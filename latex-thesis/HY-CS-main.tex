@@ -4,9 +4,9 @@
 %% STEP 1: Choose options for MSc / BSc / seminar layout and your bibliographic style
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%  Language: 
+%%  Language:
 %%      finnish, swedish, or english
-%%  Pagination (use twoside by default)  
+%%  Pagination (use twoside by default)
 %%      oneside or twoside,
 %%  Study programme / kind of report
 %%      csm  = Master's thesis in Computer Science Master's Programme;
@@ -18,7 +18,7 @@
 %%      algorithms-track-2020 = Algorithms study track
 %%      networking-track-2020 = Networking study track
 
-\documentclass[english,twoside,censored,tkt]{HYthesisML} 
+\documentclass[english,twoside,censored,tkt]{HYthesisML}
 
 \newif\ifcomments
 \commentstrue
@@ -46,9 +46,9 @@
 %% natbib -> you can use, e.g., \citep{} or \parencite{} for (Einstein, 1905); with APA \cite -> Einstein, 1905 without ()
 %% maxcitenames=2 -> only 2 author names in text citations, if more -> et al. is used
 %% maxbibnames=99 as no great need to suppress the biliography list in a thesis
-%% for more information see biblatex package documentation, e.g., from https://ctan.org/pkg/biblatex 
+%% for more information see biblatex package documentation, e.g., from https://ctan.org/pkg/biblatex
 
-%% Reference style: select one 
+%% Reference style: select one
 %% for APA = Harvard style = authoryear -> (Einstein, 1905) use:
 % \usepackage[style=authoryear,bibstyle=authoryear,backend=biber,natbib=true,maxnames=99,maxcitenames=2,uniquelist=minyear,giveninits=true,uniquename=mininit]{biblatex}
 %% for numeric = Vancouver style -> [1] use:
@@ -58,11 +58,11 @@
 %
 
 \addbibresource{bibliography.bib}
-% in case you want the final delimiter between authors & -> (Einstein & Zweistein, 1905)    
+% in case you want the final delimiter between authors & -> (Einstein & Zweistein, 1905)
 % \renewcommand{\finalnamedelim}{ \& }
 % List the authors in the Bibilipgraphy as Lastname F, Familyname G,
 \DeclareNameAlias{sortname}{family-given}
-% remove the punctuation between author names in Bibliography 
+% remove the punctuation between author names in Bibliography
 %\renewcommand{\revsdnamepunct}{ }
 
 % Asked chat.openai.com: I'm using biblatex package, but it prints odd format volume.number in reference list, while this should be volume (number). How to fix this?
@@ -75,7 +75,7 @@
 \DeclareFieldFormat[article]{number}{\mkbibparens{#1}}
 % Now this generated format volume.(number). How to remove the dot? (and so on with some adjustments):
 \renewbibmacro*{volume+number+eid}{%
-  \setunit{\addcomma\space}% 
+  \setunit{\addcomma\space}%
   \printfield{volume}%
   %\setunit*{\addnbspace\addthinspace}% <-- Adjust spacing here
   \printfield{number}%
@@ -128,7 +128,7 @@
 % if you want to see which lines are too long or have too little stuff, comment out the following lines
 % \overfullrule=1mm
 % to see more info in the detailed log about under/overfull boxes...
-% \showboxbreadth=50 
+% \showboxbreadth=50
 % \showboxd epth=50
 
 
@@ -144,7 +144,7 @@
 \date{\today}
 
 % Set supervisors, use the titles according to the thesis language
-% in English Prof. or Dr., or in Finnish toht. or tri or FT, TkT, Ph.D. or in Swedish... 
+% in English Prof. or Dr., or in Finnish toht. or tri or FT, TkT, Ph.D. or in Swedish...
 \supervisors{Prof. Dorota Glowacka, Dr. Yang Liu}
 
 \keywords{Python, Type systems, Type annotations, Type checking, Gradual typing}
@@ -161,7 +161,7 @@
 
 \classification{\protect{\ \\
 \  Software and its engineering $\rightarrow$ Software notations and tools  $\rightarrow$ General programming languages\  \\
-\ $\rightarrow$ Language features 
+\ $\rightarrow$ Language features
 }}
 
 %% If you want to quote someone special. You can comment this line out and there will be nothing on the document.
@@ -207,6 +207,7 @@
 %% as below.
 
 \include{Ch.00_Abstract}
+\include{Ch.05_Lyhennelma}
 
 % Place ToC
 %\newpage
@@ -221,11 +222,11 @@
 %% to change the parameters. Removing the abstract and ToC commands will mess up stuff.
 %%
 %% Command \include{file} includes the file of name file.tex.
-%% A new page will be created at every \include command, 
+%% A new page will be created at every \include command,
 %% which makes it appropriate to use it for large entities such as book chapters. Cannot be nested.
-%% It is useful for a big project, as changing one of the include targets 
+%% It is useful for a big project, as changing one of the include targets
 %% won't force the regeneration of the outputs of all the rest.
-%% Alternatively, \input is a more lower level macro 
+%% Alternatively, \input is a more lower level macro
 %% which simply inputs the content of the given file like it was copy&pasted there manually.
 
 \include{Ch.10_Introduction}
@@ -245,7 +246,6 @@
 \begin{appendices}
 
 %% A sample Appendix
-\include{Ch.80_Appendix_1_Lyhennelma}
 \include{Ch.90_Appendix_2}
 %% another appendix
 % \include{instructions/instructions_english}

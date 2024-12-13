@@ -54,10 +54,15 @@ Lista termikäännöksistä:
     - Tyyppivihjeet
         - Keskitymme tarkastelemaan tyyppijärjestelmää 2). Tyyppivihjeiden tarkistamisen vapaaehtoisuus noudattaa \emph{vähittäistakuuta} (gradual guarantee), jonka mukaan saman ohjelman tyypitetyn ja tyypittämättömän version eroavaisuuksien tulisi rajoittua niiden tyyppeihin \cite{siek_refined_gradual_2015}. Pythonissa tyyppivihjeitä merkitään kaksoispisteellä muuttujille ja argumenteille {\tt x: int} ja nuolella funktioiden palautusarvoille {\tt def f() -> int: return 1}.
     - Tyyppitarkistus Pythonissa
-        -
-    - Tyyppipäättely
+        - Pythonille on kolme laajasti käytössä olevaa työkalua jotka tyyppitarkistavat: mypy, Pyright, ja PyCharm.
+        TODO: sano jotain näistä?
 
-- Related work
+    - Tyyppipäättely
+        - Kaikki mainitut tyyppejä tarkistavat työkalut hyödyntävät tyyppipäättelyä \cite{jetbrains_type_hinting_pycharm, mypy_type_inference, pyright_type_inference}. Tyyppivihjeiden lisäksi ne pystyvät siis päättelemään muuttujien tyyppejä niihin asetettujen arvojen avulla, ja palautusarvoja palautettujen muuttujien tyyppien avulla. Tyyppipäättely mahdollistaa tyypityksen hyötyjä myös tyypittämättömään koodiin, koodin täydennykseen ja virheiden havainnointiin.
+
+- Existing research
+    - Yleisin metodi Python-tyyppiannotaatioiden oikeellisuuden tutkimiseen on
+    -
 
 - Discussion
 
