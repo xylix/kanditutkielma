@@ -1,20 +1,17 @@
-\chapter{Related work\label{related_work}}
-
+\chapter{Existing research\label{related_work}}
+% research on type annotations?
 \section{Researching type annotations}
 
-One research method to investigate correctness of existing type annotations in Python code is to take a dataset and then run type checking against it \cite{rak-amnouykit_taleoftwo_2020, di_grazia_evolution_2022}. For these type checking runs authors rarely ensure that the type checking tool, type checker version, and the tools settings are a good match to the projects own configuration.
+The most prevalent research method to investigate correctness of existing type annotations in Python code is to scrape a dataset of source code and then run type checking against it \cite{di_grazia_evolution_2022, lin_towards_large_scale_2023, rak-amnouykit_taleoftwo_2020, xu_how_well_static_2023}. Authors scripted type checking with a chosen type checker to receive data on type coverage, error count and bug detection. Due to this methodology it is plausible that some of these type errors were false positives, due to: Too strict type checking settings, using different settings from the ones that the project normally uses, or differing type checker version from the ones used.
 
-However due to the methodology it is plausible that some of these type errors were false positives. Possible reasons for false positives include: Too strict type checking settings, using different settings from the ones that the project normally uses, and differing type checker version from the ones used.
-
-\comment{TODO: What other type annotation research methodologies were observed in the research material?}
+% note: nää kaikki studyt käytti yllämainittua metodologiaa, mut onks joitain jotka käytti jotain eriä?
 
 
-\section{Type annotations}
+\section{Type annotations in the wild}
 
-\section{Usage practices}
+\subsection{Usage practices}
 
-Annotations often stay unchanged for a long while after being added \cite{di_grazia_evolution_2022}. Projects can be categorized into three patterns: regular annotation, type sprints, and occasional usage. In a dataset of 9655 Python projects the used pattern correlated with number of contributors, with regular annotation averaging the highest contributor count of 62, type sprints 45, and occasional use projects averaging 25 contributors. A motivation of type annotations helping coordination between higher numbers of active contributors was hypothesized to explain this phenomena. 
-\comment{TODO: havainnollistaako nää numerot oikeastaan mitään?}
+Annotations often stay unchanged for a long while after being added \cite{di_grazia_evolution_2022}. Projects can be categorized into three patterns: regular annotation, type sprints, and occasional usage. In a dataset of 9655 Python projects the used pattern correlated with number of contributors, with regular annotation averaging the highest contributor count of 62, type sprints 45, and occasional use projects averaging 25 contributors. A motivation of type annotations helping coordination between higher numbers of active contributors was hypothesized to explain this phenomena.
 
 \subsection{Popularity}
 
@@ -38,13 +35,13 @@ A study of 9655 most popular Python projects on GitHub in 2022 found that 78.3\%
 
 \subsection{Empirical benefits}
 
-Making use of types and type checking can allow development time detection of various program defects. In a retroactive analysis it was found that up to 15\% of corrective defects that had to be patched could have been found at development time with types\cite{khan_empirical_2022}. Corrective defects consist of failures in processing, performance and implementation, and thus preventing or fixing them is a necessary part of software maintenance.
+Making use of types and type checking can allow development time detection of various program defects. In a retroactive analysis it was found that up to 15\% from a sample of corrective defects that been patched could have been found at development time with types\cite{khan_empirical_2022}. Another analysis \cite{xu_how_well_static_2023} found that in a sample of 40 type-related bugs 35\% could be detected without type annotations and 72.5\% with annotations.
+
+\comment{TODO: tavallaan olis parempi vaan dropata koko corrective defect tosta yltä, mut toisaalta en tiedä käyttikö nää samaa bugin määritelmää. "Corrective defects consist of failures in processing, performance and implementation, and thus preventing or fixing them is a necessary part of software maintenance."}
 
 Both experienced and inexperienced programmers make significant amounts of type-related mistakes when working with Python \cite{khan_empirical_2022}. These consist of: using variables before initializing them, null safety errors, and re-using variables with values of different types. This implies that both experienced and inexperienced programmers can derive benefits from types, since type checking helps fix these mistakes.
 
-
-Type annotations can enable improved editor support for the programmer.
-\comment{TODO: expand on the editor point, and a citation needed}
+\comment{TODO (hyödyllinen mutta vain yhden lauseen kappale): Having editor support for type checking can help derive these benefits without needing to run separate command line tooling or set up CI pipelines.}
 
 \section{Runtime guarantees}
 

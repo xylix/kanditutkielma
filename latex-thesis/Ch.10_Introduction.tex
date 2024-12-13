@@ -4,18 +4,16 @@
     % Tutkimuskysymyksen ja -menetelmän asettaminen, tulosten yhteenveto
     % Lukujen roolitus
 
-Python is a general purpose programming language that is in widespread use. There have been recent developments in making use of gradual typing via type annotations and inference to aid in Python development.
+Python is a general purpose programming language that is in widespread use. Since 2015 there has been support for optional type hinting, which enables adding additional type information to the source code to aid development.
 
 Python's growing market share, along with growing popularity of typing solutions for Python, seemingly contain a contradiction: Why adopt a dynamic language, if you are going to statically type the code anyway?
 
-In statically typed languages, the source code is assigned types at compile time, with type hints and type inference. A dynamic language assigns types at runtime. This affects the way programmers interact with type errors and can shift the focus point of correctness guarantees from compilation time to runtime.
+In statically typed languages, the source code is assigned types at compile time, with type hints and type inference. A dynamic language assigns types at runtime. This affects the way programmers interact with type errors and shifts the focus point of guarantees from compilation time to runtime.
 
-The choice between a statically or dynamically typed language can have a modest but statistically significant effect on code quality \cite{ray_codequality_2014}.
-However in a reproduction study \cite{codequality_reproudction_2019} the result could not be reproduced. Analysing empirical result differences between different programming languages is difficult.
-\comment{TODO: selitä miksi nää kaksi paperia on hyvä sample tän kentän tilanteesta, tai kaiva metastudy}
+The choice between a statically or dynamically typed language can have a modest but statistically significant effect on code quality \cite{nanz_comparative_2015, ray_codequality_2014}. However in a reproduction study \cite{codequality_reproudction_2019} the result from \cite{ray_codequality_2014} could not be reproduced. Authors concluded that analysing quantitative differences from large-code samples from different programming languages can easily contain statistical errors that make the results misleading or overconfident.
 
-Type-annotated Python can be described as a gradually typed language. Gradual typing is a mix of dynamic and static typing. Applying gradual typing to existing dynamic languages, such as using TypeScript over JavaScript can provide statistically significant improvements in code quality. %cite typescript sources
+Python with the optional types in use (type-annotated Python) can be described as a gradually typed language. Gradual typing is a mix of dynamic and static typing. Applying gradual typing to existing dynamic languages, such as using TypeScript over JavaScript can provide statistically significant improvements in detecting bugs \cite{gao_to_type_or_not_2017}. Similar results have been found for type-annotated Python \cite{khan_empirical_2022, rak-amnouykit_taleoftwo_2020}.
 
-This thesis provides technical background information for Python, its type system, and type checking solutions for Python. Then we analyse how, why, and to what effect type annotations are being used for in Python.
+Chapter \ref{background} provides technical background information for type systems, Python, its type system, and type checking solutions for Python. Chapter \ref{related_work} analyses how type annotations are researched, how they are used, and to what effect type annotations are being used in Python. Then discussion \ref{discussion} presents hypothesises on why use Python and why type annotate it. Chapter \ref{conclusions} concludes the researched knowledge into answers.
 
-\comment{TODO: tulosten yhteenveto}
+\comment{TODO: before turning in: Ensure the structure description is correct. Write it to flow better.}

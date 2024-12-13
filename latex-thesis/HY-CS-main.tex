@@ -93,13 +93,33 @@
 \usepackage{textcomp}        % Package for special symbols
 \usepackage[pdftex]{color, graphicx} % For pdf output and jpg/png graphics
 \usepackage{epsfig}
-\usepackage{subfigure}
 \usepackage[pdftex, plainpages=false]{hyperref} % For hyperlinks and pdf metadata
 \usepackage{fancyhdr}        % For nicer page headers
 \usepackage{tikz}            % For making vector graphics (hard to learn but powerful)
 %\usepackage{wrapfig}        % For nice text-wrapping figures (use at own discretion)
 \usepackage{amsmath, amssymb} % For better math
 \usepackage{pgfplots}
+\usepackage{array, booktabs}
+\usepackage{listings}
+\usepackage{xcolor}
+
+
+% Define styles for lstlisting
+\lstset{
+  language=Python,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{gray},
+  stringstyle=\color{teal},
+  showstringspaces=false,
+  frame=single,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  breaklines=true,
+  captionpos=b,
+  xleftmargin=2em,
+  framexleftmargin=1.5em,
+}
 \pgfplotsset{compat=1.18}
 \singlespacing               %line spacing options; normally use single
 
@@ -169,7 +189,8 @@
     filecolor=magenta,      % color of file links
     urlcolor=cyan           % color of external links
 }
-
+\usepackage{caption}
+\usepackage{subcaption} % replaces subfigure with better features
 %%-----------------------------------------------------------------------------------
 
 \begin{document}

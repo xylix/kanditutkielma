@@ -1,16 +1,14 @@
 \chapter{Conclusions\label{conclusions}}
 
-\section{Key findings}
-Python is adopted for a wide variety of reasons. Statical type hints are used for reasons that sometimes overlap with these, but the reasons are not always conflicting.
-\comment{TODO: todella mitäänsanomaton kappale?}
+Python is adopted for a wide variety of reasons, including ease of use, ease of learning, and the wide availability of packages. In comparison to other programming languages it lands at an useful compromise on readability, expressivity and syntactic noise.
 
-Type annotations are being adopted more widely. Using type annotations and type checking Python code helps developers document APIs and find errors before running the code. Type checking has been made easier by the adoption of LSP-based tooling. \comment{TODO: Expand "Why type check python" section and then conclude from the results here.}
+Type annotations are being adopted more widely due to maintenance benefits and easing the detection of bugs \cite{jin_where_to_start_2021, khan_empirical_2022}. Utilizing gradual types makes Python into a gradually typed programming language, with increased readability, self-documentation and correctness, with costs in additional syntactic noise and additional development effort.  
 
-Type annotations enable a gradual approach for finding bugs earlier and documenting APIs in ways that automated tooling can make use of. They allow developers to utilize Pythons core strengths while improving on shortcomings that have historically widely applied to dynamic scripting languages.
+Type checking has been made easier by popularity of editors that do it by default. This helps developers find bugs and utilize type information. Type-annotated Python allows developers to utilize Pythons core strengths while improving on shortcomings that have historically widely applied to dynamic scripting languages.
 
-\comment{TODO Is this useful to state?:}
-The research can not yet conclude a satisfying answer to the question "Where, and how one utilize Python type annotations?"
+Projects should adopt Python type annotations when they want to spend development efforts on improving the maintainability, correctness, and static analysis of their code base. Intentions on coverage, specifically which internal and public APIs should end up covered, should be set. Some time should be spent on estimating where correctness and analysis improvements provide most benefit. Often this would be places where type annotation is not exceptionally difficult, and which often result in bugs. When type annotating proves difficult it can sometimes be a hint that program structure is complicated, and could benefit from refactoring.
+% \cite{jin_where_to_start_2021}
 
-There are avenues for future research on utilizing Python type annotations for more benefit, comparing type checkers, and figuring out what the adoption rate and quality of type hints is now, in 2024. 
+There are avenues for future research on utilizing Python type annotation most effectively, comparing type checkers, and figuring out what the adoption rate and quality of type hints has been since 2022. Research to use the type annotations for performance and correctness benefits in runtime, and popularity of existing solutions could be useful. There is also demand for explanations on how to adopt type hints.
 
-\comment{TODO: Edit for better text quality.} Research to use the type annotations for performance and correctness benefits in runtime, and popularity of existing solutions could be useful. In general considering the size of Python there exist a lot of untapped opportunities for Python type related research.
+% Considering size of Python there seem to be lots of untapped avenues for future research.
