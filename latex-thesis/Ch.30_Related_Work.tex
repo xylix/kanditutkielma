@@ -2,7 +2,9 @@
 % research on type annotations?
 \section{Researching type annotations}
 
-The most prevalent research method to investigate correctness of existing type annotations in Python code is to scrape a dataset of source code and then run type checking against it \cite{di_grazia_evolution_2022, lin_towards_large_scale_2023, rak-amnouykit_taleoftwo_2020, xu_how_well_static_2023}. Authors scripted type checking with a chosen type checker to receive data on type coverage, error count and bug detection. Due to this methodology it is plausible that some of these type errors were false positives, due to: Too strict type checking settings, using different settings from the ones that the project normally uses, or differing type checker version from the ones used.
+The most prevalent research method to investigate correctness of existing type annotations in Python code is to sample a dataset of source code and then run type checking against it \cite{di_grazia_evolution_2022, lin_towards_large_scale_2023, rak-amnouykit_taleoftwo_2020, xu_how_well_static_2023}. This creates data on type coverage and type errors. To get data on defect detection fixed defects are sampled. By adding correct type annotations to the defective source code before the fix, researchers can detect if a type checker could have detected the defect.
+
+\comment{TODO: "It is plausible..." lause on aika heikko kielellisesti}
 
 % note: nää kaikki studyt käytti yllämainittua metodologiaa, mut onks joitain jotka käytti jotain eriä?
 
@@ -23,19 +25,20 @@ Annotations often stay unchanged for a long while after being added \cite{di_gra
 \end{figure}
 From the introduction of Python type annotations in 2015 they reached around 8\% function argument and return coverage by 2021 in an analysis of 9655 Python projects \cite{di_grazia_evolution_2022}. 
 
-Using a single large Python project picked for representativeness (TensorFlow) \cite{lin_towards_large_scale_2023}, ratio of functions that have type annotations rose from 4.99\% in 2019 to 39.12\% in 2022. This increase seems consistent with the general rate in \ref{fig:annotation-evolution}.
+Using a single large Python project picked for representativeness (TensorFlow) \cite{lin_towards_large_scale_2023}, ratio of functions that have type annotations rose from 5\% in 2019 to 39\% in 2022. This increase seems consistent with the general rate in \ref{fig:annotation-evolution}.
 
-The trend of adoption for type annotations is increasing, but the proportion of typed code was not very high by 2022.
+The trend of adoption for type annotations has been increasing, but it should be noted that the proportion of typed code was not very high by 2022.
 
 \subsection{Correctness}
 
-A 2020 study of Python type hint usage patterns \cite{rak-amnouykit_taleoftwo_2020} found that even though type hints and checking is more popular, only 15\% of the 2678 codebases analysed successfully type checked with Mypy. They also found out that errors from Mypy and Pytype find both false positives and runtime defect related type errors.
+A 2020 study of Python type hint usage patterns \cite{rak-amnouykit_taleoftwo_2020} found that even though type hints and checking is more popular, only 15\% of the 2678 codebases analysed successfully type checked with Mypy. A study of 9655 most popular Python projects on GitHub in 2022 found that 78\% of commits that had type annotations contained type errors \cite{di_grazia_evolution_2022}.
 
-A study of 9655 most popular Python projects on GitHub in 2022 found that 78.3\% of commits that had type annotations contained type errors \cite{di_grazia_evolution_2022}.
+It was also detected that errors from Mypy and Pytype find both false positives and runtime defect related type errors \cite{rak-amnouykit_taleoftwo_2020}. Some false positives could be caused by differences in type checking setup to the projects. Different type checkers, type checker versions, and configurations affect what typing patterns are counted as errors, and what errors are detected.
+
 
 \subsection{Empirical benefits}
 
-Making use of types and type checking can allow development time detection of various program defects. In a retroactive analysis it was found that up to 15\% from a sample of corrective defects that been patched could have been found at development time with types\cite{khan_empirical_2022}. Another analysis \cite{xu_how_well_static_2023} found that in a sample of 40 type-related bugs 35\% could be detected without type annotations and 72.5\% with annotations.
+Making use of types and type checking can allow development time detection of various program defects. In a retroactive analysis it was found that up to 15\% from a sample of corrective defects that been patched could have been found at development time with types\cite{khan_empirical_2022}. Another analysis \cite{xu_how_well_static_2023} found that in a sample of 40 type-related bugs 35\% could be detected without type annotations and 73\% with annotations.
 
 \comment{TODO: tavallaan olis parempi vaan dropata koko corrective defect tosta yltä, mut toisaalta en tiedä käyttikö nää samaa bugin määritelmää. "Corrective defects consist of failures in processing, performance and implementation, and thus preventing or fixing them is a necessary part of software maintenance."}
 
