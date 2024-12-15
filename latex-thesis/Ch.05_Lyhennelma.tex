@@ -1,7 +1,7 @@
 \begin{otherlanguage}{finnish}
 \chapter*{Lyhennelmä}
 
-- Introduction
+\section*{Johdanto}
 
 Python on laajasti käytetty ohjelmointikieli. Vuonna 2015 siihen lisättiin tuki valinnaisille tyyppivihjeille, jotka mahdollistavat uudenlaisen tyyppitiedon lisäämisen lähdekoodiin.
 
@@ -11,49 +11,40 @@ Staattisissa kielissä ohjelma tyypitetään kääntäessä. Dynaamisessa kieles
 
 Staattisen tai dynaamisen ohjelmointikielen valinnalla vaikuttaa joskus olevan tilastollisesti havaittava vaikutus ohjelmakoodin oikeellisuuteen \cite{nanz_comparative_2015, ray_codequality_2014}. Kuitenkin tulos paljon viitatusta vuoden 2014 tutkimuksesta \cite{ray_codequality_2014} ei toistunut vuonna 2019 suoritetussa toistotutkimuksessa \cite{codequality_reproudction_2019}. Havaitaan että ohjelmointikielillä kirjoitettujen ohjelmien oikeellisuuden vertailu on vaikeaa, sillä ohjelmointikielillä on monenlaisia eroja jotka tekevät oikeellisuuserojen vaikutuksen eristämisestä haastavaa.
 
-Python tyyppivihjeillä on vähittäisesti tyypitetty ohjelmointikieli (tyypitetty Python). Sillä kirjoitetut ohjelmat omaavat sekä staattisen että dynaamisen kielen piirteitä. Vähittäisen tyypityksen ratkaisuista, kuten JavaScript ohjelmien tyypityksen laajentamisesta TypeScriptillä, voidaan hvaita tilastollisesti merkittäviä parannuksia ohjelmointivirheiden (bugien) havaitsemisessa. \cite{gao_to_type_or_not_2017}. Tyyppivihjeillä varustetulle Pythonille on löydetty lupaavia tuloksia bugien havainnoinnista tyypittämättömään Pythoniin verrattuna \cite{khan_empirical_2022, rak-amnouykit_taleoftwo_2020}
+Python tyyppivihjeillä on vähittäisesti tyypitetty ohjelmointikieli (tyypitetty Python). Sillä kirjoitetut ohjelmat omaavat sekä staattisen että dynaamisen kielen piirteitä. Vähittäisen tyypityksen ratkaisuista, kuten JavaScript ohjelmien tyypityksen laajentamisesta TypeScriptillä, voidaan havaita tilastollisesti merkittäviä parannuksia ohjelmointivirheiden (bugien) havaitsemisessa. \cite{gao_to_type_or_not_2017}. Tyyppivihjeillä varustetulle Pythonille on löydetty lupaavia tuloksia bugien havainnoinnista tyypittämättömään Pythoniin verrattuna \cite{khan_empirical_2022, rak-amnouykit_taleoftwo_2020}
 
-\section*{Background}
-\subsection*{Tyyppijärjestelmät}
+\section*{Tyyppijärjestelmät}
+
 Tyyppijärjestelmät antavat organisoida ja kategorisoida ohjelman tilaa, informaatiota, funktioita, ja näihin liittyviä rakenteita \cite{programming_langs}. Niiden avulla ohjelmointikieli voi antaa takeita ohjelman toiminnasta, valita miten dataa käsitellään, ja tyyppi-informaatio voi toimia tarkistettavavana lisäinformaationa ohjelman rakenteesta.
 
 Käytännössä kaikki korkean tason ohjelmointikielet hyödyntävät tyyppijärjestelmää. Tyyppijärjestelmien ominaisuudet, hienojakoisuus, rajoitteet ja päättelylogiikka vaihtelevat. Ohjelmointikielet voidaan jakaa erinäisiin akseleihin: vahvasti ja heikosti tyypitettyihin, ja staattisesti, dynaamisesti tai vähittäin tyypitettyihin.
 
-\subsection*{Vahvat ja heikot tyyppijärjestelmät}
-- Vahvassa tyyppijärjestelmässä ei sallita käsittelemättömiä tyyppivirheitä \cite{cardelli_typeful_1989}. Tyyppivirheen tapahtuessa vahvasti tyypitetyn ohjelmointikielen on pakko antaa virhe ohjelmoijalle käsiteltäväksi, tai kaatua.
+Vahvassa tyyppijärjestelmässä ei sallita käsittelemättömiä tyyppivirheitä \cite{cardelli_typeful_1989}. Tyyppivirheen tapahtuessa vahvasti tyypitetyn ohjelmointikielen on pakko antaa virhe ohjelmoijalle käsiteltäväksi, tai kaatua.
 - Heikosti tyypitetyssä ohjelmointikielessä tyyppivirheen tapahtuessa se voidaan nostaa käsiteltäväksi virheeksi, mutta yleensä suoritetaan jonkinlainen implisiittinen tyyppimuunnos. Tämä voi joskus olla käytännöllistä, mutta voi johtaa virheelliseen toimintaan jonka tarkka syy on vaikea löytää.
-\subsection*{Staattinen tyypitys}
+
 Staattisesti tyypitetyssä ohjelmointikielessä jokaisella symbolille on löydyttävä tai voitava päätellä oikea tyyppi tyyppitarkistuksessa, joka yleensä suoritetaan ohjelmakoodin kääntämisen yhteydessä. Teoriassa staattisesti tyypitetylle kielelle voidaan tarjota kattavampia ohjelmointityökaluja, sillä työkaluilla on enemmän informaatiota käytettävissä.
 
-\subsection*{Dynaaminen tyypitys}
 Dynaamisesti tyypitetyssä kielessä tyypit symboleille selviävät vasta suorituksen aikana. Tämä mahdollistaa kevyemmän syntaksin, jossa ohjelmoijan ei tarvitse käyttää aikaa tyyppimäärittelyihin \cite{di_grazia_evolution_2022}.
-
-\subsection*{Vähittäinen tyypitys}
 
 Vähittäiset tyypitysjärjestelmät muodostavat ylijoukon sekä staattisista että dynaamisista ohjelmointikielistä \cite{siek_refined_gradual_2015}. Vähittäisesti tyypitetyllä kielellä voi kirjoittaa sekä täysin staattisia että täysin dynaamisia ohjelmia, ja näiden välimuotoja. Erityisenä hyötynä tämä mahdollistaa ohjelmien tyypittämisessä keskittyä hyödyllisimpiin osioihin, ja kehittää tyyppikattavuutta vähitellen \cite{siek_refined_gradual_2015}. Usein vähittäiset tyyppijärjestelmät toteutetuaan olemassaolevan ohjelmointikielen päälle, kuten Pythonissakin.
 
 Python on korkean tason tulkattu ohjelmointikielen joka on tiivis ja ilmaisuvoimainen. Pythonin tyyppijärjestelmä on vahva ja dynaaminen. Sitä käytetään esimerkiksi tieteelliseen laskentaan, koneoppimiseen, verkkopalvelukehitykseen ja komentosarjaohjelmointiin (scripting).
 
-\subsection*{Tyypit Pythonissa}
+\section*{Tyypit Pythonissa}
 
 Tyypitetyssä Pythonissa on kaksi tyyppijärjestelmää: 1) Ajonaikainen, dynaaminen, ohjelman toimintaa ohjaava järjestelmä. 2) Valinnainen tyyppivihjeisiin ja päättelyyn pohjaava järjestelmä joka lisättiin vuonna 2014 \cite{pep_484}. Nämä tyyppivihjeet eivät itsessään vaikuta ohjelman ajonaikaiseen käytökseen, mutta niitä hyödynnetään työkaluissa ja tarkistimissa.
 
-\subsection*{Tyyppivihjeet}
-
 Keskitymme tarkastelemaan tyyppijärjestelmää 2). Tyyppivihjeiden tarkistamisen vapaaehtoisuus noudattaa \emph{vähittäistakuuta} (gradual guarantee), jonka mukaan saman ohjelman tyypitetyn ja tyypittämättömän version eroavaisuuksien tulisi rajoittua niiden tyyppeihin \cite{siek_refined_gradual_2015}. Pythonissa tyyppivihjeitä merkitään kaksoispisteellä muuttujille ja argumenteille {\tt x: int} ja nuolella funktioiden palautusarvoille {\tt def f() -> int: return 1}.
-\subsection*{Tyyppitarkistus Pythonissa}
-Pythonille on kolme laajasti käytössä olevaa työkalua jotka tyyppitarkistavat: mypy, Pyright, ja PyCharm.
-\comment{TODO: sano jotain näistä?}
 
-\subsection*{Tyyppipäättely}
+Pythonille on kolme laajasti käytössä olevaa työkalua jotka tyyppitarkistavat: mypy, Pyright, ja PyCharm. Mypy on Python Software foundationin kehittämä työkalu jota voi käyttää komentoriviltä tai integroituna kehitystyökaluihin \cite{mypy_type_inference}. Pyright sisältyy Microsoftin Visual Studio Code ohjelmointitekstieditoriin \cite{pyright_type_inference}. PyCharm on JetBrains s.r.o:n ohjelmointiympäristö, jossa on kattavat ominaisuudet Python-koodin muokkaukseen \cite{jetbrains_type_hinting_pycharm}. Kaikki työkaluista hyödyntävät tyyppivihjeitä ja tyyppipäättelyä tarjotakseen ohjelmoijille tukea tyyppivirheiden löytämiseen ja tehokkaaseen ohjelmointiin.
 
 Kaikki mainitut tyyppejä tarkistavat työkalut hyödyntävät tyyppipäättelyä \cite{jetbrains_type_hinting_pycharm, mypy_type_inference, pyright_type_inference}. Tyyppivihjeiden lisäksi ne pystyvät siis päättelemään muuttujien tyyppejä niihin asetettujen arvojen avulla, ja palautusarvoja palautettujen muuttujien tyyppien avulla. Tyyppipäättely mahdollistaa tyypityksen hyötyjä myös tyypittämättömään koodiin, koodin täydennykseen ja virheiden havainnointiin.
 
-\section*{Existing research}
-Yleisin metodi Python-tyyppiannotaatioiden oikeellisuuden tutkimiseen on ottaa satunnaisotanta Python ohjelmia ja ajaa tyyppitarkistuksia sitä vasten \cite{di_grazia_evolution_2022, lin_towards_large_scale_2023, rak-amnouykit_taleoftwo_2020, xu_how_well_static_2023}. Tämän avulla saadaan dataa tyyppikattavuudesta ja tyyppivirheistä. Kun halutaan tutkia miten hyvin tyyppitarkistimet löytävät korjattavaksi priorisoituja ohjelmointivirheitä, voidaan ottaa otanta korjatuista virheistä. Lisäämällä ohjelmointivirheen sisältävään ohjelmakoodiin tyyppivihjeet voidaan tyyppitarkistimella tarkistaa olisiko virhe näkynyt tyyppivirheiden muodossa.
+\section*{Python tyyppivihjeiden tutkimus}
+Yleisin metodi Python tyyppivihjeiden oikeellisuuden tutkimiseen on ottaa satunnaisotanta Python ohjelmia ja ajaa tyyppitarkistuksia sitä vasten \cite{di_grazia_evolution_2022, lin_towards_large_scale_2023, rak-amnouykit_taleoftwo_2020, xu_how_well_static_2023}. Tämän avulla saadaan dataa tyyppikattavuudesta ja tyyppivirheistä. Kun halutaan tutkia miten hyvin tyyppitarkistimet löytävät korjattavaksi priorisoituja ohjelmointivirheitä, voidaan ottaa otanta korjatuista virheistä. Lisäämällä ohjelmointivirheen sisältävään ohjelmakoodiin tyyppivihjeet voidaan tyyppitarkistimella tarkistaa olisiko virhe näkynyt tyyppivirheiden muodossa.
 % Usage practices
 
-Funktioiden tyyppikattavuus on noussut 0\% lisäämisvuonna 2015 noin 8\% vuoteen 2021 mennessä, kuten näkyy kuvaajassa \ref{fig:annotation-evolution}. Toinen tuoreempi tutkimus selvitti tyyppikattavuutta yhdessä suuressa Python-ohjelmassa (Tensorflow) \cite{lin_towards_large_scale_2023}. Tässä tutkimuskohteessa tyyppiannotaatioiden määrä nousi 5\% vuonna 2019 39\% vuoteen 2022 mennessä. Tyyppikattavuus on ollut selkeästi nousussa, mutta voidaan myös huomata että tyypitetyn koodin osuus ei ollut vielä kovin suuri vuonna 2022.
+Funktioiden tyyppikattavuus on noussut 0\% lisäämisvuonna 2015 noin 8\% vuoteen 2021 mennessä, kuten näkyy kuvaajassa \ref{fig:annotation-evolution}. Toinen tuoreempi tutkimus selvitti tyyppikattavuutta yhdessä suuressa Python-ohjelmassa (Tensorflow) \cite{lin_towards_large_scale_2023}. Tässä tutkimuskohteessa tyyppivihjeiden määrä nousi 5\% vuonna 2019 39\% vuoteen 2022 mennessä. Tyyppikattavuus on ollut selkeästi nousussa, mutta voidaan myös huomata että tyypitetyn koodin osuus ei ollut vielä kovin suuri vuonna 2022.
 
 Vuoden 2020 tutkimuksessa tyyppivihjeiden hyödyntämisestä havaittiin että vaikka tyyppivihjeet yleistyvät, vain 15\% otannan ohjelmistoprojekteista oli virheettömiä Mypy-työkalulla tehdyssä tarkistuksessa \cite{rak-amnouykit_taleoftwo_2020}. Vuoden 2022 tutkimuksessa 9655 suosituimmasta GitHubissa olevasta Python projektista havaittiin että 78\% muutoksista sisälsi tyyppivirheitä \cite{di_grazia_evolution_2022}. Ainakin osa löydetyistä tyyppivirheistä on vääriä hälytyksiä (false positive), mutta näiden osuudesta ei ole tietoa. Tyypillisiä syitä väärille hälytyksille on erot tyyppitarkistimessa tai sen asetuksissa.
 
@@ -61,15 +52,14 @@ Tyyppivihjeitä hyödyntämällä joissain tilanteissa voidaan löytää jopa 15
 
 Sekä kokeneet että kokemattomat ohjelmoijat tekevät paljon tyyppeihin liittyviä virheitä ohjelmoidessaan Pythonia \cite{khan_empirical_2022}. Yleisesti esiintyvät virheet liittyvät muuttujien käyttämiseen ennen arvon asettamista, odottamattomiin tyhjiin arvoihin, tai muuttujien uudelleenkäyttöön niiden tyypin muuttumisen jälkeen. Koska kaiken tasoiset ohjelmoijat kohtaavat tyyppeihin liittyviä virheitä ohjelmoidessaan, tyyppitarkistamisesta voi olla kaikille hyötyä.
 
-\chapter*{Discussion}
+\section*{Pohdinta: Miksi käyttää Pythonia ja tyyppivihjeitä?}
 Miksi Pythonia käytetään? 1) Pythonin suunnittelutavoitteet ovat johtaneet sen kieleksi joka on yksinkertaista luettavaa, nopeata kirjoitettavaa, ja helppo opppia. Harvalla ohjelmointikielellä on yhtä korkea priorisointi kehittäjäkokemuksessa. 2) Pythonin helppous opppia tekee siitä suositun ensimmäisen ohjelmointikielen, jonka ansiosta sille löytyy paljon kehittäjiä. 3) Sille löytyy paljon hyödyllisiä paketteja, jotka tukevat laajaa määrää käyttötapauksia.
 
 Tutkimuskysymyksessä asetettu ristiriita: "Miksi käyttää dynaamisesti tyypitettyä kieltä ja tyypittää koodi staattisesti?", ei oikeastaan kestä syvempää tarkastelua. Tyypitetty Python ei ole staattisesti tyypitetty kieli, vaan vähittäisesti. Tämä sallii kehittäjien saada sekä dynaamisen että staattisen tyyppijärjestelmän hyötyjä. Tätä indikoi tyyppivihjeiden matalahko osuus ja tyyppivirheiden esiintyvyys myös tyypitetyissä Python lähdekoodeissa \cite{di_grazia_evolution_2022, rak-amnouykit_taleoftwo_2020}.
 
 Ilmiötä voidaan mallintaa niin että kun verrataan Pythonia muihin ohjelmointikieliin, havaitaan että Python on tiivis ja luettava kieli, jossa kuitenkin helposti jää ohjelmointivirheitä ajonaikaisiksi. Tyyppivihjeet sallivat ohjelmoijan muuttaa Pythonin ominaisuuksia, ja vaihtaa tiiviyttä lisättyyn ohjelman oikeellisuuteen.
 
-\section*{Conclusions}
-Johtopäätöksiin:
+\section*{Yhteenveto}
 
 Pythonia käytetään useista syistä. Se on kätevän luettavaa, ilmaisuvoimaista ja helppokäyttöistä.
 
@@ -77,7 +67,7 @@ Tyyppivihjeet tekevät Pythonista vähittäin tyypitetyn ohjelmointikielen joka 
 
 Tyypitetty Python antaa ohjelmoijien hyödyntää Pythonin ydinvahvuuksia, ja sallii vähittäisellä tyypityksellä ohjelmoijan hyötyä staattisten ja dynaamisten tyyppijärjestelmien hyödyistä.
 
-Tyyppivihjeet kannattaa ottaa käyttöön jos projektissa ollaan halutaan hyötyjä oikeellisuudessa, staattisessa analyysissä, ja koodin huollettavuudessa. Tyyppivihjeiden käyttöönottoon tarvitsee varata kehitysaikaa ja sitä kannattaa suunnitella. Ohjelmakoodista kannattaa arvioida millä alueilla tyypeistä on suurin hyöty ja missä ne on helpointa ottaa käyttöön. Tyyppivihjestrategian voi odottaa elävän sen mukaan kun niitä otetaan käyttöön, ja tyypitystyö saattaa paljastaa tarpeita ohjelman rakenteen parantelulle.
+Tyyppivihjeet kannattaa ottaa käyttöön, jos projektissa halutaan hyötyjä oikeellisuudessa, staattisessa analyysissä, ja koodin huollettavuudessa. Tyyppivihjeiden käyttöönottoon tarvitsee varata kehitysaikaa ja sitä kannattaa suunnitella. Ohjelmakoodista kannattaa arvioida millä alueilla tyypeistä on suurin hyöty ja missä ne on helpointa ottaa käyttöön. Tyyppivihjestrategian voi odottaa elävän sen mukaan kun niitä otetaan käyttöön, ja tyypitystyö saattaa paljastaa tarpeita ohjelman rakenteen parantelulle.
 
-Jatkotutkimukselle on paljon tilaa Python-tyypityksen saralla. Tyyppitarkistimista voisi tehdä uusia vertailuja, vihjeistä maksimihyödyn saamista voisi tarkastella, ja tilastollinen analyysi tyyppivihjeiden käytöstä vuoden 2022 jälkeen antaisi tilannekuvaa uusista trendeistä. Tyypitystyökaluja voisi myös verrata muihin laadunvarmistuksen työkaluihin, kuten yleisiin tarkistusohjelmiin (linter) tai automaattitestaukseen, ja selvittää mikä on optimi aika- ja vaiva-allokaatio näiden välillä. Ohjeille tyyppivihjeiden käyttöönotosta on myös tilaa.
+Jatkotutkimukselle on paljon tilaa Pythonin tyypityksen saralla. Tyyppitarkistimista voisi tehdä uusia vertailuja, vihjeistä maksimihyödyn saamista voisi tarkastella, ja tilastollinen analyysi tyyppivihjeiden käytöstä vuoden 2022 jälkeen antaisi tilannekuvaa uusista trendeistä. Tyypitystyökaluja voisi myös verrata muihin laadunvarmistuksen työkaluihin, kuten yleisiin tarkistusohjelmiin (linter) tai automaattitestaukseen, ja selvittää mikä on optimi aika- ja vaiva-allokaatio näiden välillä. Ohjeille tyyppivihjeiden käyttöönotosta on myös tilaa.
 \end{otherlanguage}

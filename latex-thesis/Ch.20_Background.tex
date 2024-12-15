@@ -1,5 +1,7 @@
 \chapter{Background\label{background}}
 
+
+
 \section{Type systems}
 
 Type systems are tools that enable abstract organization and categorization of data and related tools \cite{programming_langs}. They allow the programming language to give guarantees about data structures, they enable varying behaviour based on the specified type, and type data can work as inferred, controllable comments.
@@ -25,8 +27,8 @@ Effectively all high level programming languages make use of type systems. The s
 \subsection{The strong -- weak distinction}
 Type errors can be raised when an operation is called with incorrect types. In Python 3.12.6 executing {\tt 1 + "a"} yields the error {\tt "TypeError: unsupported operand type(s) for +: 'int' and 'str'" }. Programming languages vary in implicit conversions between types when an operation is applied to differently typed arguments. 
 
-A reason to avoid implicit conversion is to ensure a higher level of correctness, avoiding avoid unchecked runtime type errors which can lead to undetected erroneous behaviour. A language that aims for no unchecked runtime type errors has a strong type system \cite{cardelli_typeful_1989}. This means that runtime type errors must panic or cause checkable exceptions. Languages that allow unchecked runtime type errors and implicit runtime conversion between most types have weak type systems. In weak type systems type errors will rarely stop the execution of a program, which while sounding useful can lead to undetected defective behaviour.
-\comment{TODO: täällä vois citee jotain common javascript confusions artikkelia?}
+A reason to avoid implicit conversion is to ensure a higher level of correctness, avoiding avoid unchecked runtime type errors which can lead to undetected erroneous behaviour. A language that aims for no unchecked runtime type errors has a strong type system \cite{cardelli_typeful_1989}. This means that runtime type errors must stop execution or cause checkable exceptions. Languages that allow unchecked runtime type errors and implicit runtime conversion between most types have weak type systems. In weak type systems type errors will rarely stop the execution of a program, which while sounding useful can lead to undetected defective behaviour.
+% secret TODO: täällä vois citee jotain common javascript confusions artikkelia?
 
 \subsection{Static typing}
 Static typing requires a user to specify types at compile time, or for the compiler to have the ability to correctly infer types for all symbols. Tools for static languages can provide better suggestions and error detection, since more data is available for introspection. Compilers can also perform more effective, sometimes zero-cost optimizations for code based on type information. It is commonly believed that statical languages have better performance when optimized, and programming with them results in more correct programs. The first is often true, but can vary case-by-case \cite{nanz_comparative_2015}. The second is hard to analyse empirically \cite{codequality_reproudction_2019}, perhaps due to the fact that many other qualities affect the correctness of written programs. 

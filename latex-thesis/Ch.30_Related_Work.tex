@@ -1,12 +1,8 @@
-\chapter{Existing research\label{related_work}}
+\chapter{Research on type annotations\label{related_work}}
 % research on type annotations?
 \section{Researching type annotations}
 
 The most prevalent research method to investigate correctness of existing type annotations in Python code is to sample a dataset of source code and then run type checking against it \cite{di_grazia_evolution_2022, lin_towards_large_scale_2023, rak-amnouykit_taleoftwo_2020, xu_how_well_static_2023}. This creates data on type coverage and type errors. To get data on defect detection fixed defects are sampled. By adding correct type annotations to the defective source code before the fix, researchers can detect if a type checker could have detected the defect.
-
-\comment{TODO: "It is plausible..." lause on aika heikko kielellisesti}
-
-% note: nää kaikki studyt käytti yllämainittua metodologiaa, mut onks joitain jotka käytti jotain eriä?
 
 
 \section{Type annotations in the wild}
@@ -43,8 +39,6 @@ Making use of types and type checking can allow development time detection of va
 \comment{TODO: tavallaan olis parempi vaan dropata koko corrective defect tosta yltä, mut toisaalta en tiedä käyttikö nää samaa bugin määritelmää. "Corrective defects consist of failures in processing, performance and implementation, and thus preventing or fixing them is a necessary part of software maintenance."}
 
 Both experienced and inexperienced programmers make significant amounts of type-related mistakes when working with Python \cite{khan_empirical_2022}. These consist of: using variables before initializing them, null safety errors, and re-using variables with values of different types. This implies that both experienced and inexperienced programmers can derive benefits from types, since type checking helps fix these mistakes.
-
-\comment{TODO (hyödyllinen mutta vain yhden lauseen kappale): Having editor support for type checking can help derive these benefits without needing to run separate command line tooling or set up CI pipelines.}
 
 \section{Runtime guarantees}
 
