@@ -1,14 +1,18 @@
 \chapter{Background\label{background}}
 
+\section{Correctness and defects}
 
+In study of algorithms and theory of computation correctness of a program refers to it behaving according to the specification. A program can be proven correct by proving that it halts and that it outputs the result demanded by the specification \cite{manna_axiomatic_correctness_1974}.
+
+When analysing real-world software engineering formal proofs are rarely available, and weaker guarantees are worth inspecting. In this thesis \emph{correctness} and \emph{more correct} are used to describe relative correctness \cite{diallo_relative_correctness_2015}. Programs that are more correct follow their specification better, and thus have fewer \emph{defects}.
 
 \section{Type systems}
 
-Type systems are tools that enable abstract organization and categorization of data and related tools \cite{programming_langs}. They allow the programming language to give guarantees about data structures, they enable varying behaviour based on the specified type, and type data can work as inferred, controllable comments.
+Type systems are tools that enable abstract organization and categorization of data and related tools \cite{programming_langs}. They allow the programming language to give guarantees about data structures, they enable varying behaviour based on the specified type, and type data can work as inferred, controllable comments. The information describing the type properties of a symbol is called \emph{type information}. Type information restricts the values a variable can hold or the types of data a function can receive or output. In the context of types, a \emph{correct type} describes the data accurately.
 
-Effectively all high level programming languages make use of type systems. The systems vary in features, granularity, constraints and inference logic. Languages can be classified to static, dynamic or gradual by how their type system is applied, and to strong and weak languages based on the strength of the type system guarantees.
+Effectively all high-level programming languages make use of type systems. The systems vary in features, granularity, constraints and inference logic. Languages can be classified as static, dynamic or gradual by how their type system is applied, and to strong and weak languages based on the strength of the type system guarantees. The guarantees that type systems give on program behaviour can improve the correctness of programs. \ref{table:1} provides examples of programming languages with different type system features.
 
-\begin{table}[h!]
+\begin{table}[ht]
     \centering
     \begin{tabular}{@{}lcl@{}}
     \toprule
@@ -24,45 +28,39 @@ Effectively all high level programming languages make use of type systems. The s
 \end{table}
 % Could include c++ but it's strong - weak distinction may be confusing. Cut Java and Rust to make the table more conscise.
 
-\subsection{The strong -- weak distinction}
-Type errors can be raised when an operation is called with incorrect types. In Python 3.12.6 executing {\tt 1 + "a"} yields the error {\tt "TypeError: unsupported operand type(s) for +: 'int' and 'str'" }. Programming languages vary in implicit conversions between types when an operation is applied to differently typed arguments. 
+\subsection{Type checking}
 
-A reason to avoid implicit conversion is to ensure a higher level of correctness, avoiding avoid unchecked runtime type errors which can lead to undetected erroneous behaviour. A language that aims for no unchecked runtime type errors has a strong type system \cite{cardelli_typeful_1989}. This means that runtime type errors must stop execution or cause checkable exceptions. Languages that allow unchecked runtime type errors and implicit runtime conversion between most types have weak type systems. In weak type systems type errors will rarely stop the execution of a program, which while sounding useful can lead to undetected defective behaviour.
+Type checking refers to the process that programming languages use to ensure the that types are correct \cite{programming_langs}, and follow the rules of the type system. Type checking strategy varies based on the language's type system's features: static languages check at compile time, dynamic languages check at runtime, and gradual systems check at both, but with different granularity for each. Type checking raises \emph{type errors} when a type is incorrect. Programming languages vary in implicit conversions between types when an operation is applied to differently typed arguments. 
+% "määrittelyä esimerkin kautta, + ei olla vielä python alueella: In Python 3.12.6 executing {\tt 1 + "a"} yields the error {\tt "TypeError: unsupported operand type(s) for +: 'int' and 'str'" }. 
+
+A reason to avoid implicit conversion of arguments is to improve correctness, avoiding unchecked runtime type errors which can lead to undetected erroneous behaviour. A language that aims for no unchecked runtime type errors has a \emph{strong type system} \cite{cardelli_typeful_1989}. This means that runtime type errors must stop execution or cause checkable exceptions. Languages that allow unchecked runtime type errors and implicit runtime conversion between most types have \emph{weak type systems}. In weak type systems, type errors will rarely stop the execution of a program. While seeming useful this can lead to undetected defective behaviour.
 % secret TODO: täällä vois citee jotain common javascript confusions artikkelia?
 
-\subsection{Static typing}
-Static typing requires a user to specify types at compile time, or for the compiler to have the ability to correctly infer types for all symbols. Tools for static languages can provide better suggestions and error detection, since more data is available for introspection. Compilers can also perform more effective, sometimes zero-cost optimizations for code based on type information. It is commonly believed that statical languages have better performance when optimized, and programming with them results in more correct programs. The first is often true, but can vary case-by-case \cite{nanz_comparative_2015}. The second is hard to analyse empirically \cite{codequality_reproudction_2019}, perhaps due to the fact that many other qualities affect the correctness of written programs. 
+\subsection{Static, dynamic and gradual typing}
+Static typing requires a user to specify types at compile time, or for the compiler to have the ability to correctly infer types for all symbols. Tools for static languages can provide better suggestions and error detection since more data is available for analysis. Compilers can also perform more effective optimizations for code based on type information. It is commonly believed that statically typed languages have better performance when optimized, and programming with them results in more correct programs. The first is often true but can vary case-by-case \cite{nanz_comparative_2015}. The second is hard to analyse empirically \cite{codequality_reproudction_2019} because many other qualities affect the correctness of written programs. 
 
-\subsection{Dynamic typing}
-In a dynamically typed language the final assignments of types happens at runtime. Runtime assignment of types can be idiomatic if unknown data is received into the program and parsed in runtime. Dynamic languages feature lightweight syntax that can make it faster to get going \cite{di_grazia_evolution_2022}. Dynamic languages are often taught as first programming languages, to avoid needing to teach students type system complexities that are not useful for getting up to speed.
+In a dynamically typed language, the final assignment of types happens at runtime. Runtime assignment of types can be idiomatic if unknown data is received into the program and parsed in runtime. Dynamic languages feature lightweight syntax that can make it faster to start development \cite{di_grazia_evolution_2022}. Dynamic languages are often taught as first programming languages, to avoid needing to teach students type system complexities that distract from learning core programming concepts.
 
 % secret TODO: the evolution cite is not good quality here
 
-\subsection{Gradual typing}
-Gradual typing can be thought of as a superset of static and dynamic typing \cite{siek_refined_gradual_2015}. In a gradually typed language one can write a statically typed program, a dynamically typed program, or various in-between programs. The unique advantage of gradual typing is the ability to type important sections of a larger program, and evolve these typed sections and their proportion gradually \cite{siek_refined_gradual_2015}. Gradual typing is often implemented as a superset of an existing programming language.
-
-% secret TODO: could explain type inference abstractly here
-% secret TODO: could also explain type errors?
+Gradual typing can be thought of as a superset of static and dynamic typing \cite{siek_refined_gradual_2015}. In a gradually typed language one can write a statically typed program, a dynamically typed program, or various in-between programs. The unique advantage of gradual typing is the ability to type important sections of a larger program and evolve these typed sections and their proportion gradually \cite{siek_refined_gradual_2015}. Gradual typing is often implemented as a superset of an existing programming language.
 
 \section{Python}
-Python is a high-level interpreted programming language whose syntax uses significant whitespace for conciseness. It has a strong and dynamical type system. Significant usage domains include scientific computing, machine learning, web backend development and scripting. The concise syntax and capability to make programs executable quickly have been significant advantages in surpassing the market share of stricter, compiled languages such as Java, C\# and C++.
+Python is a high-level interpreted programming language whose syntax uses significant whitespace for conciseness. It has a strong and dynamic type system. Significant usage domains include scientific computing, machine learning, web backend development and scripting. The concise syntax and capability to make programs executable quickly have been significant advantages in surpassing the market share of stricter, compiled languages such as Java, C\# and C++.
 
-
-\section{Types in Python}
+\subsection{Types in Python}
 
 Type annotated Python has two type systems which have different scopes:
 \begin{enumerate}
-    \item The runtime type system is semantically and behaviourally relevant. The type of a Python object at runtime contains data on its values shape and possible behaviour for the object. The objects available methods are interpreted based on its runtime type.
-    \item The optional annotation system was added in 2014 after Python developers drafted Python Enhancement Proposal 484 - Type hints \cite{pep_484}. Ability to do improved static analysis, and possibility for improved refactoring, runtime type checks, and code generation were the motivation, with static analysis documented as the most important one. A prototypal type checker and the ability to add type metadata through a generic mechanism already existed, but this proposal standardized the way to annotate Python code with type data, enabling improved tooling development across the field.
+    \item The runtime type system is semantically and behaviourally relevant. The type of a Python symbol at runtime contains data on its values shape and possible behaviour for the object. Available and allowed operations are interpreted based on the symbols runtime type.
+    \item The optional annotation system was added in 2014 after Python developers drafted Python Enhancement Proposal 484 - Type hints \cite{pep_484}. Ability to do improved static analysis, the possibility for improved refactoring, runtime type checks, and code generation were the stated motivation. Static analysis was stated to be the most important one. A prototypal type checker and the ability to add type metadata through a generic mechanism already existed, but this proposal standardized the way to annotate Python code with type data, enabling improved tooling development across the field.
 \end{enumerate}
 
 Enforcement and performing any static analysis on the annotations described in 2) is completely optional and up to the developer \cite{python_typing}.
 
-\subsection{Type annotations}
-In this thesis we focus on discussing the annotation-based higher level gradual type system. Python's implementation of type annotations does not affect program behaviour like runtime types do. In theory one can run type annotated Python code without ever executing a type check, and without making use of the annotated type data. This follows the \emph{gradual guarantee} \cite{siek_refined_gradual_2015}, where a type annotated and non-annotated program should only differ in their type annotations. Type annotations are denoted via {\tt :} for variables and function arguments and {\tt ->} for return values, as can be seen in \ref{typed_code}.
+In this thesis, we focus on discussing the annotation-based higher-level gradual type system. Python's implementation of type annotations does not affect program behaviour in the way runtime types do. Type annotated Python code can be run without ever executing a type check, and without making use of the annotated type data. This follows the \emph{gradual guarantee} \cite{siek_refined_gradual_2015}, where a type annotated and non-annotated program should only differ in their type annotations. Untyped Python code (\ref{untyped_code}) does not use type annotations. Type annotations are denoted with {\tt :} for variables and function arguments and {\tt ->} for return values (\ref{typed_code}).
 
-
-\begin{figure}[t]
+\begin{figure}[h]
     \centering
      \begin{minipage}{.45\textwidth}
         \centering
@@ -72,7 +70,7 @@ def f(i, j):
     sum = i + j
     return sum % 2 == 0
         \end{lstlisting}
-        \caption{Without type annotation}
+        \caption{Untyped Python function}
         \label{untyped_code}
     \end{minipage}%
     \begin{minipage}{.45\textwidth}
@@ -82,7 +80,7 @@ def f(i: int, j: int) -> int:
     sum: int = i + j
     return sum % 2 == 0
         \end{lstlisting}
-        \caption{Type annotated}
+        \caption{Typed Python function}
         \label{typed_code}
     \end{minipage}
 \end{figure}
@@ -90,13 +88,13 @@ def f(i: int, j: int) -> int:
 \subsection{Python type checking}
 
 % secret TODO: Do a comparison of the following tools in related work / further analysis
-As of 2024 there are three widely adopted tools for Python type checking: Mypy, Pyright, PyCharm. There are also general linters and other code quality tools that type check, but these three are the most prevalent.
+As of 2024, there are three widely adopted tools for Python type checking: Mypy, Pyright, PyCharm. There are also general linters and other code quality tools that type check, but these three are the most prevalent.
 
 Mypy by Python foundation is a common tool to run in Continuous Integration environments to do type checking across tests. It has a command line interface and can be utilized through Language Servers in code editors. 
 
 Microsoft's Visual Studio Code is the most popular editor for Python programming \cite{python_software_foundation_jetbrains_sro_python_nodate}. It utilizes Pyright for type checking by default, in-line type errors.
 
-PyCharm is a commercial Python IDE developed by JetBrains s.r.o. It is the second most popular Python editor and the most popular full IDE. PyCharm has its own integrated type checker. PyCharm, being an IDE, is rarely utilized outside of the developers machine. 
+PyCharm is a commercial Python IDE developed by JetBrains s.r.o. It is the second most popular Python editor and the most popular full IDE. PyCharm has its own integrated type checker. PyCharm, being an IDE, is rarely utilized outside of the developer's machine. 
 
 It is common for developers to develop code with VS Code or PyCharm and then run {\tt mypy } in a continuous integration environment, providing a kind double checking with slightly different prioritisations affecting what situations each checker considers errors.
 
@@ -104,7 +102,7 @@ It is common for developers to develop code with VS Code or PyCharm and then run
 
 \subsection{Type inference}
 
-Mypy, Pyright and PyCharm all support type inference \cite{jetbrains_type_hinting_pycharm, mypy_type_inference, pyright_type_inference}. This means that they can \emph{infer} what types a variable is from the values assigned to it. They also do inference for function return values from the values that are returned. Type inference enables some benefits from type checking even when code is minimally typed, and is commonly used for editor features such as autocompletion and detecting type errors before runtime.
+Mypy, Pyright and PyCharm all support \emph{type inference} \cite{jetbrains_type_hinting_pycharm, mypy_type_inference, pyright_type_inference}. This means that they can \emph{infer} the type of a variable from the values assigned to it. The tools can also infer function return values from return values. Type inference enables some benefits from type checking even when code is minimally typed, and is commonly used for editor features such as autocompletion and detecting type errors before runtime.
 
 \begin{figure}[t]
     \centering

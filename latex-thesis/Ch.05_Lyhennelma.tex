@@ -48,7 +48,7 @@ Funktioiden tyyppikattavuus on noussut 0\% lisäämisvuonna 2015 noin 8\% vuotee
 
 Vuoden 2020 tutkimuksessa tyyppivihjeiden hyödyntämisestä havaittiin että vaikka tyyppivihjeet yleistyvät, vain 15\% otannan ohjelmistoprojekteista oli virheettömiä Mypy-työkalulla tehdyssä tarkistuksessa \cite{rak-amnouykit_taleoftwo_2020}. Vuoden 2022 tutkimuksessa 9655 suosituimmasta GitHubissa olevasta Python projektista havaittiin että 78\% muutoksista sisälsi tyyppivirheitä \cite{di_grazia_evolution_2022}. Ainakin osa löydetyistä tyyppivirheistä on vääriä hälytyksiä (false positive), mutta näiden osuudesta ei ole tietoa. Tyypillisiä syitä väärille hälytyksille on erot tyyppitarkistimessa tai sen asetuksissa.
 
-Tyyppivihjeitä hyödyntämällä joissain tilanteissa voidaan löytää jopa 15\% korjaamista vaativista ohjelmointivirheistä \cite{khan_empirical_2022}. Toisessa analyysissä jossa otanta kohdistui tyyppeihin liittyviin ohjelmointivirheisiin, niistä 35\% voitiin löytää tyyppitarkistimella ilman vihjeitä, ja 73\% vihjeiden avulla.
+Tyyppivihjeitä hyödyntämällä joissain tilanteissa voidaan löytää jopa 11\% korjaamista vaativista ohjelmointivirheistä \cite{khan_empirical_2022}. Toisessa analyysissä jossa otanta kohdistui tyyppeihin liittyviin ohjelmointivirheisiin, niistä 35\% voitiin löytää tyyppitarkistimella ilman vihjeitä, ja 73\% vihjeiden avulla.
 
 Sekä kokeneet että kokemattomat ohjelmoijat tekevät paljon tyyppeihin liittyviä virheitä ohjelmoidessaan Pythonia \cite{khan_empirical_2022}. Yleisesti esiintyvät virheet liittyvät muuttujien käyttämiseen ennen arvon asettamista, odottamattomiin tyhjiin arvoihin, tai muuttujien uudelleenkäyttöön niiden tyypin muuttumisen jälkeen. Koska kaiken tasoiset ohjelmoijat kohtaavat tyyppeihin liittyviä virheitä ohjelmoidessaan, tyyppitarkistamisesta voi olla kaikille hyötyä.
 
@@ -57,7 +57,7 @@ Miksi Pythonia käytetään? 1) Pythonin suunnittelutavoitteet ovat johtaneet se
 
 Tutkimuskysymyksessä asetettu ristiriita: "Miksi käyttää dynaamisesti tyypitettyä kieltä ja tyypittää koodi staattisesti?", ei oikeastaan kestä syvempää tarkastelua. Tyypitetty Python ei ole staattisesti tyypitetty kieli, vaan vähittäisesti. Tämä sallii kehittäjien saada sekä dynaamisen että staattisen tyyppijärjestelmän hyötyjä. Tätä indikoi tyyppivihjeiden matalahko osuus ja tyyppivirheiden esiintyvyys myös tyypitetyissä Python lähdekoodeissa \cite{di_grazia_evolution_2022, rak-amnouykit_taleoftwo_2020}.
 
-Ilmiötä voidaan mallintaa niin että kun verrataan Pythonia muihin ohjelmointikieliin, havaitaan että Python on tiivis ja luettava kieli, jossa kuitenkin helposti jää ohjelmointivirheitä ajonaikaisiksi. Tyyppivihjeet sallivat ohjelmoijan muuttaa Pythonin ominaisuuksia, ja vaihtaa tiiviyttä lisättyyn ohjelman oikeellisuuteen.
+Ilmiötä voidaan mallintaa vertaamalla Pythonia muihin ohjelmointikieliin, ja tästä havaitaan että Python on tiivis ja luettava kieli jossa kuitenkin helposti jää ohjelmointivirheitä ajonaikaisiksi. Tyyppivihjeet sallivat ohjelmoijan muuttaa Pythonin ominaisuuksia, ja vaihtaa tiiviyttä parannettuun ohjelman oikeellisuudessa.
 
 \section*{Yhteenveto}
 

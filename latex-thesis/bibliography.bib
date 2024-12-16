@@ -1,3 +1,29 @@
+@inproceedings{diallo_relative_correctness_2015,
+	title = {Correctness and {Relative} {Correctness}},
+	volume = {2},
+	doi = {10.1109/ICSE.2015.200},
+	abstract = {In the process of trying to define what is a software fault, we have foundthat to formally define software faults we need to introduce the conceptof relative correctness, i.e. the property of a program to be more-correctthan another with respect to a given specification. A feature of a programis a fault (for a given specification)only because there exists an alternative to it that would makethe program more-correct with respect to the specification.In this paper, we explore applications of the concept of relative correctness in programtesting, program repair, and program design.Specifically, we argue that in many situations of software testing,fault removal and program repair, testing for relative correctnessrather than absolute correctness leads to clearer conclusions andbetter outcomes. Also, we find that designing programs by stepwisecorrectness-enhancing transformations rather than by stepwise correctness-preserving refinements leads to simpler programs and is more tolerant of designer mistakes.},
+	booktitle = {2015 {IEEE}/{ACM} 37th {IEEE} {International} {Conference} on {Software} {Engineering}},
+	author = {Diallo, Nafi and Ghardallou, Wided and Mili, Ali},
+	year = {2015},
+	keywords = {Generators, Maintenance engineering, Semantics, Software, Software engineering, Software testing},
+	pages = {591--594},
+}
+
+@article{manna_axiomatic_correctness_1974,
+	title = {Axiomatic approach to total correctness of programs},
+	volume = {3},
+	doi = {10.1007/BF00288637},
+	abstract = {We present here an axiomatic approach which enables one to prove by formal methods that his program is “totally correct” (i.e., it terminates and is logically correct—does what it is supposed to do). The approach is similar to Hoare's approach [3] for proving that a program is “partially correct” (i.e., that whenever it terminates it produces correct results). Our extension to Hoare's method lies in the possibility of proving both correctness and termination by one unified formalism. One can choose to prove total correctness by a single step, or by incremental proof steps, each step establishing more properties of the program.},
+	language = {en},
+	number = {3},
+	journal = {Acta Informatica},
+	author = {Manna, Zohar and Pnueli, Amir},
+	year = {1974},
+	keywords = {Communication Network, Data Structure, Information System, Information Theory, Operating System},
+	pages = {243--263},
+}
+
 @inproceedings{xu_how_well_static_2023,
 	title = {How {Well} {Static} {Type} {Checkers} {Work} with {Gradual} {Typing}? {A} {Case} {Study} on {Python}},
 	shorttitle = {How {Well} {Static} {Type} {Checkers} {Work} with {Gradual} {Typing}?},
@@ -213,7 +239,7 @@
 }
 
 @misc{pep_484,
-	title = {{PEP} 484 – {Type} {Hints} {\textbar} peps.python.org},
+	title = {{PEP} 484 – {Type} {Hints}},
 	url = {https://peps.python.org/pep-0484/},
 	abstract = {PEP 3107 introduced syntax for function annotations, but the semantics were deliberately left undefined.  There has now been enough 3rd party usage for static type analysis that the community would benefit from a standard vocabulary and baseline tools w...},
 	language = {en},
